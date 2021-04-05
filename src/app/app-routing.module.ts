@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { ProdutosComponent } from './produtos/produtos.component';
-import { SobreProjetoComponent } from './sobre-projeto/sobre-projeto.component';
+import { LandingpageComponent } from './pages/landingpage/landingpage.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.component';
 
 const routes: Routes = [
 

@@ -1,0 +1,12 @@
+.card-img{
+  border-radius: 9px;
+}
+
+.card {
+  background: #3F3D56;
+  color: #ffffff
+}
+
+.card-title{
+  font-size: 18px;
+}
