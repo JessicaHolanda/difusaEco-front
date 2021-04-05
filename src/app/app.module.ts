@@ -3,11 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { ProdutosComponent } from './produtos/produtos.component';
-import { SobreProjetoComponent } from './sobre-projeto/sobre-projeto.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LandingpageComponent } from './pages/landingpage/landingpage.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.component';
+import { CardMemberComponent } from './components/card-member/card-member.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProdutoComponent } from './components/produto/produto.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { SobreProjetoComponent } from './sobre-projeto/sobre-projeto.component';
     FooterComponent,
     LandingpageComponent,
     ProdutosComponent,
-    SobreProjetoComponent
+    SobreProjetoComponent,
+    CardMemberComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

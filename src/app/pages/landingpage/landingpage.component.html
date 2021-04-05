@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<div class="landing container">
+
+  <!---->
+  <section>
+    <div class="row">
+      <div class="col">
+        <h5 class="title text-center">Ser Sustentavel</h5>
+        <p class="text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma
+          introdução a um conteúdo adicional. Este conteúdo é um pouco maior.</p>
+      </div>
+      <div class="col"></div>
+    </div>
+
+  </section>
+  <!--/-->
+
+  <!---->
+  <section>
+    novos produtos
+  </section>
+  <!--/-->
+
+
+  <!--Card e carrossel-->
+
+  <div class="container">
+    <h2 class="text-center m-5">PRODUTOS EM DESTAQUE</h2>
+
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active "> -->
+
+    <div class="row">
+      <div class="col-md-4 col-12">
+        <app-produto></app-produto>
+      </div>
+    </div>
+
+
+    <!-- </div>
+
+
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Próximo</span>
+    </a> -->
+
+      <div class=" btn-container mt-5 d-flex justify-content-center">
+        <button type="button" class="btn ">Todos Produtos</button>
+
+    </div>
+  </div>
+
+
+
+  <!--/Card e carrossel-->
+
+
+
+  <!--Sobrenos-->
+  <div class="container mb-5">
+    <hr class="mb-5">
+    <h2 class="text-center mb-5">EQUIPE</h2>
+
+
+    <div *ngIf="gitUsersLoaded" class="row">
+      <div class="col" *ngFor="let gitUser of gitUsers">
+        <app-card-member [gitUser]="gitUser"></app-card-member>
+      </div>
+    </div>
+  </div>
+  <!--/Sobrenos-->
+
+
+</div>
+<app-footer></app-footer>
