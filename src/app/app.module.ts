@@ -11,6 +11,7 @@ import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.compo
 import { CardMemberComponent } from './components/card-member/card-member.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProdutoComponent } from './components/produto/produto.component';
     ProdutosComponent,
     SobreProjetoComponent,
     CardMemberComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
