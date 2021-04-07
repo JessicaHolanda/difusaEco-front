@@ -11,7 +11,7 @@ import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.compo
 import { CardMemberComponent } from './components/card-member/card-member.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
