@@ -4,13 +4,19 @@
 
   <!---->
   <section>
-    <div class="row">
-      <div class="col">
+    <div class="row mt-5">
+      <div class="col-lg col-sm-12">
         <h5 class="title text-center">Ser Sustentavel</h5>
+        <div class="text-center">
         <p class="text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma
           introdução a um conteúdo adicional. Este conteúdo é um pouco maior.</p>
+        </div>
       </div>
-      <div class="col"></div>
+      <div class="col-lg col-sm-12">
+        <div>
+          <img class="w-100" src="https://via.placeholder.com/1600x800">
+        </div>
+      </div>
     </div>
 
   </section>
@@ -18,7 +24,7 @@
 
   <!---->
   <section>
-    novos produtos
+
   </section>
   <!--/-->
 
@@ -26,14 +32,14 @@
   <!--Card e carrossel-->
 
   <div class="container">
-    <h2 class="text-center m-5">PRODUTOS EM DESTAQUE</h2>
+    <h4 class="text-center m-5">Produtos em destaque</h4>
 
     <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active "> -->
 
     <div class="row">
-      <div class="col-md-4 col-12">
+      <div class="col-md-4 col-6">
         <app-produto></app-produto>
       </div>
     </div>
@@ -60,19 +66,15 @@
   </div>
 
 
-
   <!--/Card e carrossel-->
-
-
-
   <!--Sobrenos-->
   <div *ngIf="gitUsersLoaded" class="container mb-5">
     <hr class="mb-5">
-    <h2 class="text-center mb-5">Equipe</h2>
+    <h4 class="text-center mb-5">Equipe</h4>
 
 
     <div class="row">
-      <div class="col" *ngFor="let member of members">
+      <div class="col-md-4 col-lg col-6 mb-md-3 mb-lg-0 mb-3" *ngFor="let member of members">
         <app-card-member [member]="member"></app-card-member>
       </div>
     </div>

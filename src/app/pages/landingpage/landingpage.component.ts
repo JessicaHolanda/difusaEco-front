@@ -15,27 +15,27 @@ export class LandingpageComponent implements OnInit {
     {
       github_user: 'deniseanjos',
       linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut sagittis felis. Phasellus congue massa nisi, vel pellentesque urna cursus eget. Morbi dapibus tellus neque, a pretium justo blandit vel. Pellentesque at lacinia dolor, vitae pellentesque arcu. Curabitur sed eleifend turpis. Cras vitae risus tincidunt risus ultricies suscipit. Vivamus accumsan elit nec tortor accumsan blandit. Ut sapien mi, hendrerit a velit vel, tincidunt blandit dolor. Donec ornare lectus urna.',
+      bio: 'Desenvolvedora Fullstack',
     },
     {
       github_user: 'JessicaHolanda',
       linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut sagittis felis. Phasellus congue massa nisi, vel pellentesque urna cursus eget. Morbi dapibus tellus neque, a pretium justo blandit vel. Pellentesque at lacinia dolor, vitae pellentesque arcu. Curabitur sed eleifend turpis. Cras vitae risus tincidunt risus ultricies suscipit. Vivamus accumsan elit nec tortor accumsan blandit. Ut sapien mi, hendrerit a velit vel, tincidunt blandit dolor. Donec ornare lectus urna.',
+      bio: 'Desenvolvedora Fullstack',
     },
     {
       github_user: 'marcoshakuro',
       linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut sagittis felis. Phasellus congue massa nisi, vel pellentesque urna cursus eget. Morbi dapibus tellus neque, a pretium justo blandit vel. Pellentesque at lacinia dolor, vitae pellentesque arcu. Curabitur sed eleifend turpis. Cras vitae risus tincidunt risus ultricies suscipit. Vivamus accumsan elit nec tortor accumsan blandit. Ut sapien mi, hendrerit a velit vel, tincidunt blandit dolor. Donec ornare lectus urna.',
+      bio: 'Desenvolvedor Fullstack',
     },
     {
       github_user: 'scaziti',
       linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut sagittis felis. Phasellus congue massa nisi, vel pellentesque urna cursus eget. Morbi dapibus tellus neque, a pretium justo blandit vel. Pellentesque at lacinia dolor, vitae pellentesque arcu. Curabitur sed eleifend turpis. Cras vitae risus tincidunt risus ultricies suscipit. Vivamus accumsan elit nec tortor accumsan blandit. Ut sapien mi, hendrerit a velit vel, tincidunt blandit dolor. Donec ornare lectus urna.',
+      bio: 'Desenvolvedor Fullstack',
     },
     {
       github_user: 'RuiCoders',
       linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut sagittis felis. Phasellus congue massa nisi, vel pellentesque urna cursus eget. Morbi dapibus tellus neque, a pretium justo blandit vel. Pellentesque at lacinia dolor, vitae pellentesque arcu. Curabitur sed eleifend turpis. Cras vitae risus tincidunt risus ultricies suscipit. Vivamus accumsan elit nec tortor accumsan blandit. Ut sapien mi, hendrerit a velit vel, tincidunt blandit dolor. Donec ornare lectus urna.',
+      bio: 'Desenvolvedor Fullstack',
     },
   ];
 

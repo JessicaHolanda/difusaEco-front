@@ -24,8 +24,8 @@ export class CardMemberComponent implements OnInit {
         this.groupMember = val;
 
 
-          this.bio = val.bio.substr(0, 100);
-          if (val.bio.length > 100) {
+          this.bio = val.bio.substr(0, 60);
+          if (val.bio.length > 60) {
             this.bio += '...';
 
         }

@@ -12,6 +12,7 @@ import { CardMemberComponent } from './components/card-member/card-member.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarrinhoComponent } from './component/carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProdutosComponent,
     SobreProjetoComponent,
     CardMemberComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
