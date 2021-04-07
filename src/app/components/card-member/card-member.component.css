@@ -10,3 +10,43 @@
 .card-title{
   font-size: 18px;
 }
+
+.card hover{
+background-color: yellow;
+}
+
+.icone-git {
+  width: 5rem;
+  font-size: 5rem;
+  color: pink;
+}
+
+.redes-sociais {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 2rem;
+  color: white;
+}
+
+.redes-sociais a{
+  text-decoration: none;
+  color: white !important;
+}
+
+.description {
+  position: relative;
+}
+
+.redes-sociais-container {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  left: 0;
+}
+
+.bio-container {
+  min-height: 130px;
+  font-size: 12px;
+  text-align: center;
+}

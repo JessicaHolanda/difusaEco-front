@@ -66,14 +66,14 @@
 
 
   <!--Sobrenos-->
-  <div class="container mb-5">
+  <div *ngIf="gitUsersLoaded" class="container mb-5">
     <hr class="mb-5">
-    <h2 class="text-center mb-5">EQUIPE</h2>
+    <h2 class="text-center mb-5">Equipe</h2>
 
 
-    <div *ngIf="gitUsersLoaded" class="row">
-      <div class="col" *ngFor="let gitUser of gitUsers">
-        <app-card-member [gitUser]="gitUser"></app-card-member>
+    <div class="row">
+      <div class="col" *ngFor="let member of members">
+        <app-card-member [member]="member"></app-card-member>
       </div>
     </div>
   </div>

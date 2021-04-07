@@ -1,5 +1,5 @@
-import { GithubUser } from '../../model/GithubUser';
 import { Component, Input, OnInit } from '@angular/core';
+import { Member } from 'src/app/model/Member';
 
 @Component({
   selector: 'app-card-member',
@@ -8,16 +8,28 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardMemberComponent implements OnInit {
 
-  public user:GithubUser;
+  public groupMember: Member;
+  public bio: string = "";
+
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  @Input() set gitUser(val: GithubUser) {
+  @Input() set member(val: Member) {
+
     if (val) {
-        this.user = val;
+        this.groupMember = val;
+
+
+          this.bio = val.bio.substr(0, 100);
+          if (val.bio.length > 100) {
+            this.bio += '...';
+
+        }
+
     }
 }
 

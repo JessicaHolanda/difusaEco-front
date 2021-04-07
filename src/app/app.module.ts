@@ -11,6 +11,7 @@ import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.compo
 import { CardMemberComponent } from './components/card-member/card-member.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProdutoComponent } from './components/produto/produto.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
