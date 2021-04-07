@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserLogin } from 'src/app/model/UserLogin';
+import { Usuario } from 'src/app/model/Usuario';
+import { AuthService } from 'src/app/service/auth.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +12,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  user: Usuario = new Usuario
+  confirmarSenha: string
+  tipoUsuario: string = "normal"
+  userLogin: UserLogin = new UserLogin
 
-  ngOnInit(): void {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { }
+
+  ngOnInit() {
+    window.scroll(0,0)
+  }
+
+  confirmeSenha(event: any) {
+    this.confirmarSenha = event.target.value
+  }
+
+  cadastrar() {
+    this.user.tipoUsuario = this.tipoUsuario
+    
+    if (this.user.senha != this.confirmarSenha) {
+      alert("Senhas não conferem. Favor digitar novamente.")
+    } else {
+      this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
+        this.user = resp
+        alert("Cadastro realizado com sucesso. Bem vinde! Realize login.")
+      })
+    }
+
+  }
+
+  logar() {
+    this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
+      this.userLogin = resp
+
+      environment.token = this.userLogin.token
+      environment.nomeUsuario = this.userLogin.nomeUsuario
+      environment.id = this.userLogin.id
+
+      this.router.navigate(['/login'])
+      alert("Welcome!")
+    } , err => {
+      if(err.status == 500) {
+        alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
+      }
+    })
   }
 
 }
