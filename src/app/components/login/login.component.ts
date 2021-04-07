@@ -13,9 +13,11 @@ import { environment } from 'src/environments/environment.prod';
 export class LoginComponent implements OnInit {
 
   user: Usuario = new Usuario
+  userLista: Usuario[]
   confirmarSenha: string
   tipoUsuario: string = "normal"
   userLogin: UserLogin = new UserLogin
+  loginOk: boolean = false
 
   constructor(
     private authService: AuthService,
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0,0)
+    this.getAllUsuarios()
   }
 
   confirmeSenha(event: any) {
@@ -44,18 +47,38 @@ export class LoginComponent implements OnInit {
 
   }
 
+  getAllUsuarios() {
+    this.authService.getAllUsuarios().subscribe((resp: Usuario[]) => {
+      this.userLista = resp
+      console.log(this.userLista)
+    })
+  }
+
+  verificarLogin(){ 
+    this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
+      console.log(resp)
+    })
+  }
+
   logar() {
+
+    // let btnLogin = document.querySelector('.entrar')
+    // btnLogin?.setAttribute('data-dismiss','modal')
+
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
       this.userLogin = resp
-
+      
       environment.token = this.userLogin.token
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
-
+      
       this.router.navigate(['/login'])
       alert("Welcome!")
+
     } , err => {
-      if(err.status == 500) {
+
+      console.log(err)
+      if(err.status == 401) {
         alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
       }
     })

@@ -21,4 +21,8 @@ export class AuthService {
     return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar',user)
   }
 
+  getAllUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>('http://localhost:8080/usuarios')
+  }
+
 }
