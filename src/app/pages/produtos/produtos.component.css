@@ -1,0 +1,69 @@
+
+.border {
+    background: #27AE60;
+    border-radius: 15px;
+}
+.tags-top{
+    font-family: Amatic SC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}
+
+.tags-botton{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+}
+
+
+
+.main-products{
+    font-family: Amatic SC;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: -0.015em;
+    font-size: 60px;
+}
+
+
+
+.card-title{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 29.7561px;
+    line-height: 41px;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+
+.card-price{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 29.7561px;
+    line-height: 41px;
+    letter-spacing: -0.015em;
+    color:#27AE60;
+}
+
+.border-top{
+    width: autopx; 
+    height: 50px;
+    background: #27AE60;
+    border-radius: 20px 0px 20px 0px;
+}
+
+.card-body bg-light{
+    border-radius: 20px 0px;
+}
+
