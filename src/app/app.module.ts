@@ -11,8 +11,12 @@ import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.compo
 import { CardMemberComponent } from './components/card-member/card-member.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
+import { AdmComponent } from './pages/adm/adm.component';
+import { HeaderAdmComponent } from './components/header-adm/header-adm.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +28,8 @@ import { FormsModule } from '@angular/forms';
     SobreProjetoComponent,
     CardMemberComponent,
     ProdutoComponent,
+    AdmComponent,
+    HeaderAdmComponent,
     LoginComponent
   ],
   imports: [
