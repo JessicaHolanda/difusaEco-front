@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 import { LandingpageComponent } from './pages/landingpage/landingpage.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.component';
@@ -10,7 +11,9 @@ const routes: Routes = [
 
   {path: 'landingpage', component: LandingpageComponent},
   {path: 'produtos', component: ProdutosComponent},
-  {path: 'sobre-projeto', component: SobreProjetoComponent}
+  {path: 'sobre-projeto', component: SobreProjetoComponent},
+  {path: 'login', component: LoginComponent}
+  
 ];
 
 @NgModule({
