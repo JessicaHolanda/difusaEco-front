@@ -14,6 +14,10 @@ import { ProdutoComponent } from './components/produto/produto.component';
 import { AdmComponent } from './pages/adm/adm.component';
 import { HeaderAdmComponent } from './components/header-adm/header-adm.component';
 
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,12 +29,14 @@ import { HeaderAdmComponent } from './components/header-adm/header-adm.component
     CardMemberComponent,
     ProdutoComponent,
     AdmComponent,
-    HeaderAdmComponent
+    HeaderAdmComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
