@@ -75,8 +75,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/login'])
       alert("Welcome!")
 
-      $("#modal .close").click()
-
     } , err => {
 
       console.log(err)
