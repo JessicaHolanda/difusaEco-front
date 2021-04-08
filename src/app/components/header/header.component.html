@@ -18,11 +18,14 @@
         <li class="nav-item">
           <a class="nav-link" routerLink='/sobre-projeto'>Sobre o projeto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/adm'>Pagina Adm</a>
+        </li>
       </ul>
 
       <a href="">carrinho</a>
       <div class="btn-container">
-        <button button type="button" class="btn">
+        <button type="button" class="btn" data-toggle="modal" data-target="#modalLogin" >
           Login
         </button>
       </div>
@@ -30,3 +33,9 @@
   </nav>
 </div>
 <!--/NavBar-->
+
+<!-- Direcionamento para Componente com Modal de Login e Cadastro -->
+
+<app-login></app-login>
+
+<!-- /Direcionamento para Componente com Modal de Login e Cadastro -->

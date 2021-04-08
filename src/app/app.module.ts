@@ -12,7 +12,13 @@ import { CardMemberComponent } from './components/card-member/card-member.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CarrinhoComponent } from './component/carrinho/carrinho.component';
+import { AdmComponent } from './pages/adm/adm.component';
+import { HeaderAdmComponent } from './components/header-adm/header-adm.component';
+
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -24,12 +30,17 @@ import { CarrinhoComponent } from './component/carrinho/carrinho.component';
     SobreProjetoComponent,
     CardMemberComponent,
     ProdutoComponent,
-    CarrinhoComponent
+
+    AdmComponent,
+    HeaderAdmComponent,
+    LoginComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     FontAwesomeModule
   ],
   providers: [],
