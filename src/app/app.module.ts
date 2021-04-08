@@ -11,6 +11,8 @@ import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.compo
 import { CardMemberComponent } from './components/card-member/card-member.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoComponent } from './components/produto/produto.component';
+import { AdmComponent } from './pages/adm/adm.component';
+import { HeaderAdmComponent } from './components/header-adm/header-adm.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProdutoComponent } from './components/produto/produto.component';
     ProdutosComponent,
     SobreProjetoComponent,
     CardMemberComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    AdmComponent,
+    HeaderAdmComponent
   ],
   imports: [
     BrowserModule,
