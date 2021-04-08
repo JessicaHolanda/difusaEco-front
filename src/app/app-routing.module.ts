@@ -10,7 +10,7 @@ import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.compo
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'landingpage', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
 
   {path: 'home', component: LandingpageComponent},
   {path: 'produtos', component: ProdutosComponent},
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'adm', component: AdmComponent},
 
   {path: 'login', component: LoginComponent}
-  
+
 
 ];
 

@@ -17,7 +17,7 @@ import { HeaderAdmComponent } from './components/header-adm/header-adm.component
 
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 @NgModule({

@@ -14,7 +14,7 @@ export class LandingpageComponent implements OnInit {
   public members: Member[] = [
     {
       github_user: 'deniseanjos',
-      linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
+      linkedin_url: 'https://www.linkedin.com/in/deniseanjos/',
       bio: 'Desenvolvedora Fullstack',
     },
     {
@@ -24,17 +24,17 @@ export class LandingpageComponent implements OnInit {
     },
     {
       github_user: 'marcoshakuro',
-      linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
+      linkedin_url: 'https://www.linkedin.com/in/marcos-dos-santos-1834ab92/',
       bio: 'Desenvolvedor Fullstack',
     },
     {
       github_user: 'scaziti',
-      linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
+      linkedin_url: 'https://www.linkedin.com/in/raphaelscaziti/',
       bio: 'Desenvolvedor Fullstack',
     },
     {
       github_user: 'RuiCoders',
-      linkedin_url: 'https://www.linkedin.com/in/jessica-holanda33/',
+      linkedin_url: 'https://www.linkedin.com/in/rui-almeida-de-andrade/',
       bio: 'Desenvolvedor Fullstack',
     },
   ];
