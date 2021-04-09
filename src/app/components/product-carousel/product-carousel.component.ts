@@ -1,16 +1,17 @@
 import { Categoria } from './../../model/Categoria';
 import { CategoriaService } from './../../service/categoria.service';
 
+import { ProdutoService } from './../../service/produto.service';
 import { Produto } from './../../model/Produto';
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from 'src/app/service/produto.service';
 
 @Component({
-  selector: 'app-produtos',
-  templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.css']
+  selector: 'app-product-carousel',
+  templateUrl: './product-carousel.component.html',
+  styleUrls: ['./product-carousel.component.css']
 })
-export class ProdutosComponent implements OnInit {
+export class ProductCarouselComponent implements OnInit {
+
   produto: Produto = new Produto()
   listaProdutos: Produto[]
 
@@ -41,4 +42,5 @@ export class ProdutosComponent implements OnInit {
       this.listaCategorias = resp
     })
   }
+
 }

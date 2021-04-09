@@ -15,16 +15,8 @@ const routes: Routes = [
   {path: 'home', component: LandingpageComponent},
   {path: 'produtos', component: ProdutosComponent},
   {path: 'sobre-projeto', component: SobreProjetoComponent},
-
-
   {path: 'adm', component: AdmComponent},
-
-
-  {path: 'adm', component: AdmComponent},
-
   {path: 'login', component: LoginComponent}
-  
-
 ];
 
 @NgModule({

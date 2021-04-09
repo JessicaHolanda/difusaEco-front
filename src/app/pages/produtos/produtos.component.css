@@ -57,7 +57,7 @@
 }
 
 .border-top{
-    width: autopx; 
+    width: autopx;
     height: 50px;
     background: #27AE60;
     border-radius: 20px 0px 20px 0px;
@@ -65,5 +65,57 @@
 
 .card-body bg-light{
     border-radius: 20px 0px;
+}
+
+.carousel-item {
+  height: 520px;
+}
+@media screen and (max-width: 1300px) {
+  .carousel-item {
+      height: 500px;
+  }
+  .card-columns {
+      column-count: 1;
+  }
+}
+.card-img-top-produtos {
+  width: 180px;
+  height: 180px;
+  border-radius: 15px 0px;
+}
+.card-produtos {
+  border-radius: 17px 0px;
+  border: 0;
+  width: 330px;
+  height: 480px;
+}
+.header-card-produtos {
+  border-radius: 15px 0px;
+  background-color: #27AE60;
+  height: 40px;
+}
+h1 {
+  color: rgba(58, 22, 81, 1);
+}
+.btn {
+  text-align: center;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: #27AE60;
+  border-radius: 6px;
+  margin-left: 5px;
+}
+
+.btn:hover{
+  opacity: 80%;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 15px;
 }
 

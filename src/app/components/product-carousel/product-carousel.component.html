@@ -1,0 +1,22 @@
+<!--Card-Model-->
+<div *ngFor="let item of listaProdutos">
+  <div class="card mt-5">
+    <div class="green-bar"></div>
+    <div class="img-container text-center m-auto w-75 pt-3">
+      <img class="card-img w-100 img-border" src="{{item.imagem}}" alt="Imagem card">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+      <p class="card-text text-center">{{item.descricao}}</p>
+      <p class="card-price text-center"> {{item.preco}}</p>
+
+      <div class="btn-container">
+        <button button type="button" class="btn">
+          Comprar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--/Card-Model-->

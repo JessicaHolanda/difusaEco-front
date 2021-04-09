@@ -8,7 +8,7 @@
       <img
         src="https://www.forbes.com/advisor/wp-content/uploads/2020/04/one-credit-card-to-pay-another-e1592262039821.jpg"
         class="img-fluid" alt="Imagem responsiva">
-        
+
     </div>
 
     <div class="col-md-6 d-flex justify-content-center p-3">
@@ -42,124 +42,105 @@
 <!--Carrossel -->
 <div class="container">
   <h2 class="text-center m-5 main-products">PRODUTOS EM DESTAQUE</h2>
-
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row">
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-            
+  <div class="d-flex justify-content-center">
+    <!--Carousel Wrapper-->
+    <div id="multi-products" class="carousel slide carousel-multi-item" data-ride="carousel">
+      <!--Indicators-->
+      <div>
+        <ol class="carousel-indicators">
+          <li data-target="#multi-products" data-slide-to="0" class="active"></li>
+          <li data-target="#multi-products" data-slide-to="1"></li>
+          <li data-target="#multi-products" data-slide-to="2"></li>
+        </ol>
+      </div>
+      <!--/.Indicators-->
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active">
+          <div class="card-columns d-flex justify-space-evenly">
+            <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:0:3'>
+              <div class="header-card-produtos"></div>
+              <div class="img-container text-center m-auto w-75 pt-3">
+                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+                <p class="card-price text-center">R$ {{item.preco}}</p>
+                <div class="btn-container">
+                  <button button type="button" class="btn">
+                    Saiba Mais
+                  </button>
+                  <button button type="button" class="btn">
+                    Carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-            
+        </div>
+        <!--Second slide-->
+        <div class="carousel-item">
+          <div class="card-columns d-flex justify-space-evenly">
+            <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:3:6'>
+              <div class="header-card-produtos"></div>
+              <div class="img-container text-center m-auto w-75 pt-3">
+                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+                <p class="card-price text-center">R$ {{item.preco}}</p>
+                <div class="btn-container">
+                  <button button type="button" class="btn">
+                    Saiba Mais
+                  </button>
+                  <button button type="button" class="btn">
+                    Carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-            
+        </div>
+        <!--Third slide-->
+        <div class="carousel-item ">
+          <div class="card-columns d-flex justify-space-evenly">
+            <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:6:9'>
+              <div class="header-card-produtos"></div>
+              <div class="img-container text-center m-auto w-75 pt-3">
+                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+                <p class="card-price text-center">R$ {{item.preco}}</p>
+                <div class="btn-container">
+                  <button button type="button" class="btn">
+                    Saiba Mais
+                  </button>
+                  <button button type="button" class="btn">
+                    Carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-            
-          </div>
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-            
-          </div>
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-            
-          </div>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-      
-          </div>
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-      
-          </div>
-          <div class="col-md-4 col-12 mb-5">
-            <app-produto></app-produto>
-      
-          </div>
-        </div>
-      </div>
-
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Anterior</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Próximo</span>
-    </a>
   </div>
-  
-</div>
 <!--Carrossel -->
+
 
 <!--Card de produtos-->
 <div class="container">
   <h2 class="text-center m-5 main-products">PRODUTOS</h2>
+      <div class="card-columns mb-5">
 
+        <app-product-carousel></app-product-carousel>
 
-  <div class="row">
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
+      </div>
     </div>
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-  </div>
-
-  <div class="row mt-5 mb-5">
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-    <div class="col-md-4 col-12 mb-5">
-      <app-produto></app-produto>
-      
-    </div>
-  </div>
-
-</div>
 <!--/Card de produtos-->
+
+
 
