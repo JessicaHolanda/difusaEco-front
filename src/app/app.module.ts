@@ -17,6 +17,8 @@ import { HeaderAdmComponent } from './components/header-adm/header-adm.component
 
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
+import { ProdutoCarrinhoComponent } from './components/produto-carrinho/produto-carrinho.component';
 
 
 
@@ -30,10 +32,12 @@ import { FormsModule } from '@angular/forms';
     SobreProjetoComponent,
     CardMemberComponent,
     ProdutoComponent,
+    ProdutoCarrinhoComponent,
 
     AdmComponent,
     HeaderAdmComponent,
-    LoginComponent
+    LoginComponent,
+    CarrinhoComponent,
 
   ],
   imports: [

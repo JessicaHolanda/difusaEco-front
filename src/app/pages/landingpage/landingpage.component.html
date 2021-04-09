@@ -1,20 +1,28 @@
-
-
 <div class="landing container">
 
   <!---->
   <section>
-    <div class="row mt-5">
-      <div class="col-lg col-sm-12">
-        <h5 class="title text-center">Ser Sustentavel</h5>
-        <div class="text-center">
-        <p class="text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma
-          introdução a um conteúdo adicional. Este conteúdo é um pouco maior.</p>
+    <div class="row mt-3">
+      <div class="col-lg-5 col-md-5 col-sm-12 about-project-container">
+        <div class="teste"></div>
+        <div class=" text-justify">
+          <h5 class="title text-center">Sobre o Projeto</h5>
+          <div class="text-center">
+            <p class="text">O projeto nasceu com o propósito de
+              dispor produtos ecológicos adquiridos
+              de fornecedores locais em um só
+              lugar, fomentando o trabalho e
+              economia de pequenos produtores e
+              incentivando o consumo consciente..</p>
+          </div>
+          <div class=" btn-container mt-5 d-flex justify-content-center">
+            <button type="button" class="btn ">Saiba mais</button>
+          </div>
         </div>
       </div>
-      <div class="col-lg col-sm-12">
+      <div class="col-lg-7 col-md-7 col-sm-12">
         <div>
-          <img class="w-100" src="https://via.placeholder.com/1600x800">
+          <img class="w-100 p-5" src="../../../assets/img/earth.svg">
         </div>
       </div>
     </div>
@@ -24,6 +32,14 @@
 
   <!---->
   <section>
+    <div class="img-section2">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar hendrerit est, elementum aliquam metus hendrerit id. Praesent aliquet arcu nulla, sit amet pulvinar dolor molestie vitae. Aliquam at ipsum vel sapien auctor pharetra ac nec magna. Donec dolor augue, lacinia nec leo venenatis, porttitor suscipit erat. Mauris felis est, lobortis hendrerit malesuada sit amet, lacinia ac sem. Pellentesque varius augue sed dapibus sollicitudin. In sed mi diam. Duis lacinia libero nec dignissim condimentum. Suspendisse euismod fermentum congue. Aliquam non diam tempus, aliquet neque quis, ullamcorper nisl. Duis lectus enim, auctor eu lorem sit amet, accumsan blandit ante. Nam commodo hendrerit finibus. Curabitur pellentesque sem lorem, a pretium justo pellentesque non.
+
+        Proin vitae augue eu dui tempor mattis ut nec massa. Duis et augue sed justo feugiat blandit ac eu felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sed libero faucibus, semper quam in, tristique massa. Nulla volutpat, felis non aliquam malesuada, felis ex faucibus quam, eu condimentum risus urna vitae leo. Quisque vel maximus dui, in pulvinar quam. Mauris et odio in dui faucibus tempor. Curabitur lacus sem, tincidunt id pretium eu, egestas non velit. Proin egestas lobortis ante, quis euismod quam vulputate et. Fusce placerat ac lacus faucibus fermentum. Suspendisse sit amet lacus rutrum, lacinia risus et, ullamcorper leo. Aenean ut libero vulputate, venenatis quam vitae, sodales dolor. Praesent venenatis ligula ut erat dignissim, sed fringilla libero faucibus.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar hendrerit est, elementum aliquam metus hendrerit id. Praesent aliquet arcu nulla, sit amet pulvinar dolor molestie vitae. Aliquam at ipsum vel sapien auctor pharetra ac nec magna. Donec dolor augue, lacinia nec leo venenatis, porttitor suscipit erat. Mauris felis est, lobortis hendrerit malesuada sit amet, lacinia ac sem. Pellentesque varius augue sed dapibus sollicitudin. In sed mi diam. Duis lacinia libero nec dignissim condimentum. Suspendisse euismod fermentum congue. Aliquam non diam tempus, aliquet neque quis, ullamcorper nisl. Duis lectus enim, auctor eu lorem sit amet, accumsan blandit ante. Nam commodo hendrerit finibus. Curabitur pellentesque sem lorem, a pretium justo pellentesque non.
+
+        Proin vitae augue eu dui tempor mattis ut nec massa. Duis et augue sed justo feugiat blandit ac eu felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sed libero faucibus, semper quam in, tristique massa. Nulla volutpat, felis non aliquam malesuada, felis ex faucibus quam, eu condimentum risus urna vitae leo. Quisque vel maximus dui, in pulvinar quam. Mauris et odio in dui faucibus tempor. Curabitur lacus sem, tincidunt id pretium eu, egestas non velit. Proin egestas lobortis ante, quis euismod quam vulputate et. Fusce placerat ac lacus faucibus fermentum. Suspendisse sit amet lacus rutrum, lacinia risus et, ullamcorper leo. Aenean ut libero vulputate, venenatis quam vitae, sodales dolor. Praesent venenatis ligula ut erat dignissim, sed fringilla libero faucibus.</p>
+    </div>
 
   </section>
   <!--/-->
@@ -32,7 +48,7 @@
   <!--Card e carrossel-->
 
   <div class="container">
-    <h4 class="text-center m-5">Produtos em destaque</h4>
+    <h4 class="text-center m-5 title">Produtos em destaque</h4>
 
     <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -59,8 +75,8 @@
       <span class="sr-only">Próximo</span>
     </a> -->
 
-      <div class=" btn-container mt-5 d-flex justify-content-center">
-        <button type="button" class="btn ">Todos Produtos</button>
+    <div class=" btn-container mt-5 d-flex justify-content-center">
+      <button type="button" class="btn ">Todos Produtos</button>
 
     </div>
   </div>
@@ -70,7 +86,7 @@
   <!--Sobrenos-->
   <div *ngIf="gitUsersLoaded" class="container mb-5">
     <hr class="mb-5">
-    <h4 class="text-center mb-5">Equipe</h4>
+    <h4 class="text-center mb-5 title">Equipe</h4>
 
 
     <div class="row">
@@ -83,4 +99,3 @@
 
 
 </div>
-
