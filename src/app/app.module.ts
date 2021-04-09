@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ProductCarouselComponent } from './components/product-carousel/product-
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
