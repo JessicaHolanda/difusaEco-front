@@ -13,6 +13,8 @@ import { ProdutoService } from 'src/app/service/produto.service';
 export class ProdutosComponent implements OnInit {
   produto: Produto = new Produto()
   listaProdutos: Produto[]
+  idProduto: number
+  nomeProduto: string
 
   categoria: Categoria = new Categoria()
   listaCategorias: Categoria[]
@@ -40,5 +42,26 @@ export class ProdutosComponent implements OnInit {
     this.categoriaService.getAllCategoria().subscribe((resp: Categoria[]) =>{
       this.listaCategorias = resp
     })
+  }
+
+  findProdutoByID()
+  {
+    this.produtoService.getByIdProduto(this.idProduto).subscribe((resp: Produto) => {
+      this.produto = resp;
+    })
+  }
+
+  findProdutoByNome()
+  {
+    if(this.nomeProduto == '')
+    {
+      this.findAllProdutos()
+    }
+    else
+    {
+      this.produtoService.getByNomeProduto(this.nomeProduto).subscribe((resp: Produto[]) => {
+        this.listaProdutos = resp;
+      })
+    }
   }
 }
