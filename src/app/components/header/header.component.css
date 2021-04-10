@@ -1,3 +1,8 @@
+.logo-header{
+  width: 10rem;
+  padding-right: 2rem;
+}
+
 .btn {
   text-align: center;
   left: 0%;
@@ -31,4 +36,9 @@
 
 .cart-icon{
   color: #540388;
+  font-size: 1.3rem;
+}
+
+.nav-item {
+  margin: 0 10px;
 }
