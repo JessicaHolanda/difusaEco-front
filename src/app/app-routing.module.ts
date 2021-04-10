@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LandingpageComponent } from './pages/landingpage/landingpage.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.component';
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 
 const routes: Routes = [
 
@@ -15,8 +16,12 @@ const routes: Routes = [
   {path: 'home', component: LandingpageComponent},
   {path: 'produtos', component: ProdutosComponent},
   {path: 'sobre-projeto', component: SobreProjetoComponent},
+
+  {path: 'carrinho', component: CarrinhoComponent},
+
   {path: 'adm', component: AdmComponent},
   {path: 'login', component: LoginComponent}
+
 ];
 
 @NgModule({
