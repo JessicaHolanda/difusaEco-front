@@ -4,7 +4,7 @@ import { UserLogin } from 'src/app/model/UserLogin';
 import { Usuario } from 'src/app/model/Usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
