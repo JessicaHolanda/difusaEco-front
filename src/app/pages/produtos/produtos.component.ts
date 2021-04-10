@@ -44,7 +44,7 @@ export class ProdutosComponent implements OnInit {
     })
   }
 
-  findProdutoByID()
+  findProdutoById()
   {
     this.produtoService.getByIdProduto(this.idProduto).subscribe((resp: Produto) => {
       this.produto = resp;
