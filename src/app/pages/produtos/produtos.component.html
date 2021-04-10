@@ -38,99 +38,10 @@
   </div>
 </div>
 
-
-
 <!--/Cards-top-->
 
 <!--Carrossel -->
-<div class="container">
-  <h2 class="text-center m-5 main-products">PRODUTOS EM DESTAQUE</h2>
-  <div class="d-flex justify-content-center">
-    <!--Carousel Wrapper-->
-    <div id="multi-products" class="carousel slide carousel-multi-item" data-ride="carousel">
-      <!--Indicators-->
-      <div>
-        <ol class="carousel-indicators">
-          <li data-target="#multi-products" data-slide-to="0" class="active"></li>
-          <li data-target="#multi-products" data-slide-to="1"></li>
-          <li data-target="#multi-products" data-slide-to="2"></li>
-        </ol>
-      </div>
-      <!--/.Indicators-->
-      <!--Slides-->
-      <div class="carousel-inner" role="listbox">
-        <!--First slide-->
-        <div class="carousel-item active">
-          <div class="card-columns d-flex justify-space-evenly">
-            <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:0:3'>
-              <div class="header-card-produtos"></div>
-              <div class="img-container text-center m-auto w-75 pt-3">
-                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}}</p>
-                <div class="btn-container">
-                  <button button type="button" class="btn">
-                    Saiba Mais
-                  </button>
-                  <button button type="button" class="btn">
-                    Carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Second slide-->
-        <div class="carousel-item">
-          <div class="card-columns d-flex justify-space-evenly">
-            <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:3:6'>
-              <div class="header-card-produtos"></div>
-              <div class="img-container text-center m-auto w-75 pt-3">
-                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}}</p>
-                <div class="btn-container">
-                  <button button type="button" class="btn">
-                    Saiba Mais
-                  </button>
-                  <button button type="button" class="btn">
-                    Carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Third slide-->
-        <div class="carousel-item ">
-          <div class="card-columns d-flex justify-space-evenly">
-            <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:6:9'>
-              <div class="header-card-produtos"></div>
-              <div class="img-container text-center m-auto w-75 pt-3">
-                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}}</p>
-                <div class="btn-container">
-                  <button button type="button" class="btn">
-                    Saiba Mais
-                  </button>
-                  <button button type="button" class="btn">
-                    Carrinho
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<app-product-carousel></app-product-carousel>
 <!--Carrossel -->
 
 
@@ -138,12 +49,41 @@
 <div class="container">
   <h2 class="text-center m-5 main-products">PRODUTOS</h2>
 
-      <div class="card-columns mb-5">
-
-        <app-product-carousel></app-product-carousel>
-
+  <!--pesquisa-produto-->
+  <div class="row d-flex justify-content-center mt-5 mb-5">
+    <div class="col-md-4">
+      <div class="form-group">
+        <input type="text" class="form-control" id="produto" placeholder="Pesquise por título"
+          [(ngModel)]="nomeProduto" (keyup)='findProdutoByNome()'>
       </div>
     </div>
+  </div>
+  <!--/pesquisa-produto-->
+      <div class="card-columns mb-5">
+
+        <div *ngFor="let item of listaProdutos">
+          <div class="card mt-5">
+            <div class="green-bar"></div>
+            <div class="img-container text-center m-auto w-75 pt-3">
+              <img class="card-img w-100 img-border" src="{{item.imagem}}" alt="Imagem card">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+              <p class="card-text text-center">{{item.descricao}}</p>
+              <p class="card-price text-center"> {{item.preco}}</p>
+
+              <div class="btn-container">
+                <button button type="button" class="btn">
+                  Comprar
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+</div>
 <!--/Card de produtos-->
 
 

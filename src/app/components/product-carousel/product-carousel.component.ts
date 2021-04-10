@@ -14,6 +14,7 @@ export class ProductCarouselComponent implements OnInit {
 
   produto: Produto = new Produto()
   listaProdutos: Produto[]
+  nomeProduto: string
 
   categoria: Categoria = new Categoria()
   listaCategorias: Categoria[]
@@ -42,5 +43,4 @@ export class ProductCarouselComponent implements OnInit {
       this.listaCategorias = resp
     })
   }
-
 }
