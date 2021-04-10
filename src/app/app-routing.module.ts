@@ -16,17 +16,19 @@ const routes: Routes = [
   {path: 'home', component: LandingpageComponent},
   {path: 'produtos', component: ProdutosComponent},
   {path: 'sobre-projeto', component: SobreProjetoComponent},
+<<<<<<< HEAD
   {path: 'carrinho', component: CarrinhoComponent},
 
 
+=======
+>>>>>>> be22c9ba219c9675d6490fe1eca77cd29c7952a8
   {path: 'adm', component: AdmComponent},
-
-
-  {path: 'adm', component: AdmComponent},
-
   {path: 'login', component: LoginComponent}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> be22c9ba219c9675d6490fe1eca77cd29c7952a8
 ];
 
 @NgModule({
