@@ -7,7 +7,6 @@ import { Produto } from '../model/Produto';
   providedIn: 'root'
 })
 export class ProdutoService {
-  public carrinho: Produto[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -41,12 +40,16 @@ export class ProdutoService {
    ----------  Funções do Carrinho ----------
   */
 
-    addToCart(produtoCarrinho: Produto): void {
-      this.carrinho.push(produtoCarrinho);
-   }
+  addToCart(produtoCarrinho: Produto): void {
+    const carrinho: Produto[] = JSON.parse(localStorage.getItem('produto') || '[]');
+    carrinho.push(produtoCarrinho);
 
-   getProdutosCarrinho():Produto[] {
-      return this.carrinho;
-   }
+    localStorage.setItem("produto", JSON.stringify(carrinho));
+  }
+
+  getProdutosCarrinho():Produto[] {
+    const carrinho: Produto[] = JSON.parse(localStorage.getItem('produto') || '[]');
+    return carrinho;
+  }
 
 }

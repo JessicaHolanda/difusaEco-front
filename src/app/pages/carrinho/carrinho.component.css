@@ -28,6 +28,13 @@
   padding-bottom: 15px;
 }
 
+.green-bar {
+  width: 100%;
+  padding: 1.5rem;
+  background: #27AE60;
+  border-radius: 20px 0px
+}
+
 
 
 
