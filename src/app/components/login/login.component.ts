@@ -4,6 +4,7 @@ import { UserLogin } from 'src/app/model/UserLogin';
 import { Usuario } from 'src/app/model/Usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -62,26 +63,30 @@ export class LoginComponent implements OnInit {
 
   logar() {
 
-    // let btnLogin = document.querySelector('.entrar')
-    // btnLogin?.setAttribute('data-dismiss','modal')
-
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
       this.userLogin = resp
-      
+
       environment.token = this.userLogin.token
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
-      
-      this.router.navigate(['/login'])
+
+      if(this.userLogin.tipoUsuario == "normal"){
+        $('#modalLogin').hide()
+      $('.modal-backdrop').hide()
       alert("Welcome!")
+      } else {
+        this.router.navigate(['/adm'])
+      }
+      
 
     } , err => {
 
-      console.log(err)
       if(err.status == 401) {
         alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
-      }
+     
+   }
     })
   }
+
 
 }
