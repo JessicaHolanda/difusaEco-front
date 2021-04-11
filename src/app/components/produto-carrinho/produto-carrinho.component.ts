@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Produto } from 'src/app/model/Produto';
+import { ProdutoService } from 'src/app/service/produto.service';
 
 @Component({
   selector: 'app-produto-carrinho',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./produto-carrinho.component.css']
 })
 export class ProdutoCarrinhoComponent implements OnInit {
+  produtoCarrinho: Produto;
 
-  constructor() { }
+
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
   }
+
+  @Input() set produto(val: Produto) {
+
+    if (val) {
+        this.produtoCarrinho = val;
+    }
+}
 
 }

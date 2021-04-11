@@ -7,9 +7,9 @@ import { Produto } from '../model/Produto';
   providedIn: 'root'
 })
 export class ProdutoService {
+  public carrinho: Produto[] = [];
 
   constructor(private http: HttpClient) { }
-
 
   getAllProduto():Observable<Produto[]>
   {
@@ -35,5 +35,18 @@ export class ProdutoService {
   deleteProduto(id:number){
     return this.http.delete(`http://localhost:8080/produto/${id}`)
   }
+
+
+  /*
+   ----------  Funções do Carrinho ----------
+  */
+
+    addToCart(produtoCarrinho: Produto): void {
+      this.carrinho.push(produtoCarrinho);
+   }
+
+   getProdutosCarrinho():Produto[] {
+      return this.carrinho;
+   }
 
 }

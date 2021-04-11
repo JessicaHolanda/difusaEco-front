@@ -1,22 +1,17 @@
-<div class="container">
-  <div class="">
+<div class="container" *ngIf="produtosCarrinho.length > 0">
+
     <h1 class="title text-center">Carrinho</h1>
-  </div>
-    <div class="row">
+
+  <div class="row">
     <div class="col-md-8 col-12">
 
       <div class="row">
-        <div class="col-12 mb-2">
-          <!-- <app-produto-carrinho></app-produto-carrinho> -->
-        </div>
-        <div class="col-12 mb-2">
-          <!-- <app-produto-carrinho></app-produto-carrinho> -->
-        </div>
-        <div class="col-12 mb-2">
-          <!-- <app-produto-carrinho></app-produto-carrinho> -->
-        </div>
-      </div>
 
+        <div class="col-12 mb-2 " *ngFor="let produto of produtosCarrinho">
+          <app-produto-carrinho [produto]="produto"></app-produto-carrinho>
+        </div>
+
+      </div>
     </div>
 
     <div class="col-md-4 col-12">
@@ -36,10 +31,16 @@
         <button type="button" class="btn ">Finalizar Compra</button>
       </div>
       <!--END Botão de checkout-->
+
+
     </div>
 
-    <div class="col-md-4 col-12">
+  </div>
 
+  <div class="container" *ngIf="produtosCarrinho.length == 0">
+    <div>
+      <h1>Carrinho Vazio!</h1>
+      <p>Teste</p>
+      <img src="../../../assets/img/Logotipo.svg" alt="">
     </div>
   </div>
-</div>

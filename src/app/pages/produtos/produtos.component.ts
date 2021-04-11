@@ -64,4 +64,13 @@ export class ProdutosComponent implements OnInit {
       })
     }
   }
+
+  /*
+   ----------  Funções do Carrinho ----------
+  */
+
+   addToCart(produto: Produto) {
+    this.produtoService.addToCart(produto);
+  }
+
 }
