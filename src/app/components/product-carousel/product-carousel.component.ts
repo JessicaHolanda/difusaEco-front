@@ -1,19 +1,19 @@
 import { Categoria } from './../../model/Categoria';
 import { CategoriaService } from './../../service/categoria.service';
 
+import { ProdutoService } from './../../service/produto.service';
 import { Produto } from './../../model/Produto';
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from 'src/app/service/produto.service';
 
 @Component({
-  selector: 'app-produtos',
-  templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.css']
+  selector: 'app-product-carousel',
+  templateUrl: './product-carousel.component.html',
+  styleUrls: ['./product-carousel.component.css']
 })
-export class ProdutosComponent implements OnInit {
+export class ProductCarouselComponent implements OnInit {
+
   produto: Produto = new Produto()
   listaProdutos: Produto[]
-  idProduto: number
   nomeProduto: string
 
   categoria: Categoria = new Categoria()
@@ -43,34 +43,4 @@ export class ProdutosComponent implements OnInit {
       this.listaCategorias = resp
     })
   }
-
-  findProdutoById()
-  {
-    this.produtoService.getByIdProduto(this.idProduto).subscribe((resp: Produto) => {
-      this.produto = resp;
-    })
-  }
-
-  findProdutoByNome()
-  {
-    if(this.nomeProduto == '')
-    {
-      this.findAllProdutos()
-    }
-    else
-    {
-      this.produtoService.getByNomeProduto(this.nomeProduto).subscribe((resp: Produto[]) => {
-        this.listaProdutos = resp;
-      })
-    }
-  }
-
-  /*
-   ----------  Funções do Carrinho ----------
-  */
-
-   addToCart(produto: Produto) {
-    this.produtoService.addToCart(produto);
-  }
-
 }

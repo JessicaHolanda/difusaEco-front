@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   cadastrar() {
     this.user.tipoUsuario = this.tipoUsuario
-    
+
     if (this.user.senha != this.confirmarSenha) {
       alert("Senhas não conferem. Favor digitar novamente.")
     } else {
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  verificarLogin(){ 
+  verificarLogin(){
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
       console.log(resp)
     })
@@ -70,8 +70,12 @@ export class LoginComponent implements OnInit {
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
 
+
       if(this.userLogin.tipoUsuario == "normal"){
         $('#modalLogin').hide()
+
+      $('#modalLogin').hide()
+
       $('.modal-backdrop').hide()
       alert("Welcome!")
       } else {

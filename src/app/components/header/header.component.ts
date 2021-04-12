@@ -1,3 +1,4 @@
+import { ProdutoService } from 'src/app/service/produto.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public qtdCarrinho: number;
 
-  constructor() { }
+  constructor(public produtoService: ProdutoService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getQtdCarrinho()
+  }
+
+  getQtdCarrinho(){
+    this.qtdCarrinho = this.produtoService.getProdutosCarrinho().length;
+    console.log(this.qtdCarrinho);
   }
 
 }
