@@ -1,8 +1,9 @@
+import { ProdutoCarrinho } from './../model/Produto-Carrinho';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Produto } from '../model/Produto';
-import { ProdutoCarrinho } from '../model/Produto-Carrinho';
+
 
 @Injectable({
   providedIn: 'root'
@@ -42,11 +43,11 @@ export class ProdutoService {
   */
 
   addToCart(produto: Produto) {
-        
+
     const carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
-    
-    const produtoCarrinho: ProdutoCarrinho = { 
-      qtd: 1, 
+
+    const produtoCarrinho: ProdutoCarrinho = {
+      qtd: 1,
       produto: produto,
       totalProduto: produto.preco
     }
@@ -78,7 +79,7 @@ export class ProdutoService {
     for (const i in carrinho) {
      if (carrinho[i].produto.id == produtoCarrinho.produto.id) {
          carrinho[i].qtd += 1;
-       	 break; 
+       	 break;
      }
    }
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
@@ -92,12 +93,24 @@ export class ProdutoService {
 
     for (const i in carrinho) {
      if (carrinho[i].produto.id == produtoCarrinho.produto.id) {
-         carrinho[i].qtd -= 1;
-       	 break; 
+       if(carrinho[i].qtd>1){
+        carrinho[i].qtd -= 1;
+       }
+       	break;
      }
    }
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
   }
 
+  atualizarTotalProduto(produtoCarrinho: ProdutoCarrinho){
+    let carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
+
+    for (const i in carrinho) {
+      if (carrinho[i].produto.id == produtoCarrinho.produto.id) {
+          carrinho[i].totalProduto = produtoCarrinho.totalProduto;
+           break;
+      }
+    }
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  }
 }

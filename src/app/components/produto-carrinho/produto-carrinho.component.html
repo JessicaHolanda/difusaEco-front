@@ -35,15 +35,19 @@
     <div class="col-md-5 col-12 d-flex product-values">
       <!--Quantidade-->
       <div class="qtd-container d-flex">
-        <button class="btn-qtd btn" id="plus" type="button" (click)="subtrair()" >-</button>
-          <div class="pr-2 pl-2"> {{produtoCarrinho?.qtd}} </div>
-        <button class="btn-qtd btn" id="minus" type="button" (click)="adicionar()" >+</button>
+        <button class="btn-qtd btn" id="plus" type="button" (click)="subtrair()" >
+          <i class="fas fa-minus"></i>
+        </button>
+          <div class="pr-2 pl-2" type="number" min="1"> {{produtoCarrinho?.qtd}} </div>
+        <button class="btn-qtd btn" id="minus" type="button" (click)="adicionar()" >
+          <i class="fas fa-plus"></i>
+        </button>
       </div>
       <!--END Quantidade-->
 
       <!--Valor Total Produto-->
       <div class="valor-total-produto">
-        <p>R$ 1000,00</p>
+        <p>R$ {{produtoCarrinho?.totalProduto}} </p>
       </div>
       <!--Valor Total Produto-->
 

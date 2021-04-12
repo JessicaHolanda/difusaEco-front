@@ -11,6 +11,7 @@ import { ProdutoService } from 'src/app/service/produto.service';
 export class ProdutoCarrinhoComponent implements OnInit {
   public produtoCarrinho: ProdutoCarrinho;
   public qtd: number;
+  public novoTotalProduto: number;
 
   constructor(private produtoService: ProdutoService) { }
 
@@ -31,22 +32,25 @@ export class ProdutoCarrinhoComponent implements OnInit {
     this.removeProduct.emit(true);
   }
 
-  adicionar(){
+  async adicionar(){
     this.produtoService.somaQtdProduto(this.produtoCarrinho);
     this.produtoCarrinho.qtd ++;
-
+    await this.totalProduto();
   }
 
-  subtrair(){
-    if(this.produtoCarrinho.qtd > 0){
+  async subtrair(){
+    if(this.produtoCarrinho.qtd > 1){
       this.produtoService.subtraiQtdProduto(this.produtoCarrinho);
       this.produtoCarrinho.qtd --;
-    } 
+    }
+    await this.totalProduto();
   }
 
-  // process(qtd: number){
-    
-  // }
+  async totalProduto(){
+    this.novoTotalProduto = this.produtoCarrinho.produto.preco * this.produtoCarrinho.qtd;
+    this.produtoCarrinho.totalProduto = this.novoTotalProduto;
+    await this.produtoService.atualizarTotalProduto(this.produtoCarrinho)
+  }
 
 
 }
