@@ -39,7 +39,7 @@ export class CategoriaService {
 
   deleteCategoria(id: number) {
     return this.http.delete(`http://localhost:8080/categoria/${id}`, 
-    {headers: {'Authorization': environment.token}}).toPromise()
+    {headers: {'Authorization': environment.token}})
   }
   
   

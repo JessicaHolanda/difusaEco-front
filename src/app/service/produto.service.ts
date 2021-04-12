@@ -36,9 +36,7 @@ export class ProdutoService {
   }
 
   deleteProduto(id:number){
-    return this.http.delete(`http://localhost:8080/produto/${id}`, {headers: {'Authorization': environment.token}}).toPromise()
+    return this.http.delete(`http://localhost:8080/produto/${id}`, {headers: {'Authorization': environment.token}})
   }
   
-
-
 }

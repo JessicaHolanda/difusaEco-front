@@ -26,6 +26,10 @@ export class AuthService {
     return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar',user)
   }
 
+  findByIdUsuario(id: number): Observable<Usuario>{
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`)
+  }
+
   getAllUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>('http://localhost:8080/usuarios')
   }
@@ -36,8 +40,7 @@ export class AuthService {
 
   deleteUsuario(id: number){
     
-    return this.http.delete(`http://localhost:8080/usuarios/${id}`).toPromise()
+    return this.http.delete(`http://localhost:8080/usuarios/${id}`)
   }
   
-
 }

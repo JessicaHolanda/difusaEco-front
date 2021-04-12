@@ -16,3 +16,13 @@
     text-align: left;
 }
 
+.btnD{
+    text-align: center;
+    left: 0%;
+    right: 0%;
+    top: 5%;
+    bottom: 5%;
+    background: #c02b2b;
+    border-radius: 6px;
+}
+

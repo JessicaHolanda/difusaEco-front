@@ -37,8 +37,8 @@
 								<th scope="col">Categoria</th>
 								<th scope="col">Quantidade</th>
 								<th scope="col">Preço</th>
-								<th scope="col">imagem</th>
-								<th scope="col">descricao</th>
+								<th scope="col">Imagem</th>
+								<th scope="col">Descrição</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -46,15 +46,21 @@
 								<th scope="row">{{item.id}}</th>
 								<td>{{item.nomeProduto}}</td>
 								<td>{{item.categoria.nomeCategoria}}</td>
-								<td>{{item.quantidade}}</td>
-								<td>{{item.preco}}</td>
+								<td>{{item.quantidade}} un.</td>
+								<td>R$ {{item.preco}}</td>
 								<td>{{item.imagem}}</td>
 								<td>{{item.descricao}}</td>
-								<td><button type="button" (click)="selecionarProduto(item)"
+								<td>
+									<button type="button" (click)="selecionarProduto(item.id)"
 										class="  btn btn-light text-black-50 mt-50" data-toggle="modal"
-										data-target="#ModalEditarProduto">Editar</button></td>
-								<td><button type="button" (click)="apagarProduto(item.id)"
-										class="  btn btn-light text-black-50 mt-50">Apagar</button></td>
+										data-target="#ModalEditarProduto">Editar
+									</button>
+								</td>
+								<td>
+									<button type="button" (click)="apagarProduto(item.id)"
+										class="  btn btn-light text-black-50 mt-50">Apagar
+									</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -75,13 +81,18 @@
 							<tr *ngFor="let item of listaCategorias">
 								<th scope="row">{{item.id}}</th>
 								<td>{{item.nomeCategoria}}</td>
-								<td><button (click)='selecionarCategoria(item)' type="button"
+								<td>
+									<button (click)='selecionarCategoria(item.id)' type="button"
 										class="  btn btn-light text-black-50 mt-50" data-toggle="modal"
 										data-target="#ModalEdicaoCategoria">
 										Editar
-									</button></td>
-								<td><button (click)='apagarCategoria(item.id)' type="button"
-										class="  btn btn-light text-black-50 mt-50">Apagar</button></td>
+									</button>
+								</td>
+								<td>
+									<button (click)='apagarCategoria(item.id)' type="button"
+										class="  btn btn-light text-black-50 mt-50">Apagar
+									</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -98,7 +109,7 @@
 								<th scope="col">Nome</th>
 								<th scope="col">Email</th>
 								<th scope="col">Senha</th>
-								<th scope="col">Tipo</th>
+								<th scope="col">Tipo Usuário</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -106,13 +117,19 @@
 								<th scope="row">{{item.id}}</th>
 								<td>{{item.nomeUsuario}}</td>
 								<td>{{item.email}}</td>
-								<td>{{item.senha}}</td>
+								<!--<td>{{item.senha}}</td>-->
 								<td>{{item.tipoUsuario}}</td>
-								<td><button type="button" (click)="selecionarUsuario(item)"
+								<td>
+									<button type="button" (click)="selecionarUsuario(item.id)"
 										class="  btn btn-light text-black-50 mt-50" data-toggle="modal"
-										data-target="#ModalEditarUsuario">Editar</button></td>
-								<td><button type="button" (click)="apagarUsuario(item.id)"
-										class="  btn btn-light text-black-50 mt-50">Apagar</button></td>
+										data-target="#ModalEditarUsuario">Editar
+										</button>
+								</td>
+								<td>
+									<button type="button" (click)="apagarUsuario(item.id)"
+										class=" btnD text-black-50 mt-50">Apagar
+									</button>
+								</td>
 						</tbody>
 					</table>
 				</div>
@@ -170,7 +187,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='cancelProduto()' type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 						<button (click)="cadastrarProduto()" type="button" class="btn btn-success"
 							data-dismiss="modal">Cadastrar produto</button>
 					</div>
@@ -193,7 +210,7 @@
 						<form>
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Produto</label>
-								<input [(ngModel)]="produtoSelecionado.nomeProduto" type="text" class="form-control"
+								<input [(ngModel)]="produto.nomeProduto" type="text" class="form-control"
 									name="nomeEditarProduto" id="nomeEditarProduto" placeholder="Digite o Nome">
 							</div>
 							<div class="form-group">
@@ -207,28 +224,28 @@
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput3">Quantidade</label>
-								<input [(ngModel)]="produtoSelecionado.quantidade" type="text" class="form-control"
+								<input [(ngModel)]="produto.quantidade" type="text" class="form-control"
 									name="editarQuantidade" id="editarQuantidade" placeholder="Digite a quantidade">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput4">Preço</label>
-								<input [(ngModel)]="produtoSelecionado.preco" type="text" class="form-control"
+								<input [(ngModel)]="produto.preco" type="text" class="form-control"
 									name="editarPreco" id="editarPreco" placeholder="Digite o preço">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput5">Imagem</label>
-								<input [(ngModel)]="produtoSelecionado.imagem" type="text" class="form-control"
+								<input [(ngModel)]="produto.imagem" type="text" class="form-control"
 									name="editarImagem" id="editarImagem" placeholder="Imagem inicial">
 							</div>
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Descrição do produto</label>
-								<textarea [(ngModel)]="produtoSelecionado.descricao" class="form-control"
+								<textarea [(ngModel)]="produto.descricao" class="form-control"
 									name="editarDescricao" id="editarDescricao" rows="3"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='cancelProduto()' type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 						<button (click)="editarProduto()" type="button" class="btn btn-success"
 							data-dismiss="modal">Editar produto</button>
 					</div>
@@ -258,7 +275,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='cancelCategoria() 'type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 						<button (click)='cadastrarCategoria()' type="button" data-dismiss="modal"
 							class="btn btn-success">Cadastrar Categoria</button>
 					</div>
@@ -282,14 +299,14 @@
 						<form>
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome da Categoria</label>
-								<input [(ngModel)]="categoriaSelecionada.nomeCategoria" type="text"
+								<input [(ngModel)]="categoria.nomeCategoria" type="text"
 									name="nomeCategoriaSelecionada" class="form-control" id="nomeCategoriaSelecionada"
 									placeholder="Digite a categoria">
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='cancelCategoria()'type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 						<button (click)='editarCategoria()' type="button" data-dismiss="modal"
 							class="btn btn-success">Editar Categoria</button>
 					</div>
@@ -332,13 +349,21 @@
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput5">Tipo Usuario</label>
-								<input [(ngModel)]="usuario.tipoUsuario" type="text" class="form-control"
-									name="tipoUsuario" id="tipoUsuario" placeholder="Tipo de usuario">
+								<select [(ngModel)]="usuario.tipoUsuario"  name="editarTipoUsuario"
+								id="editarUsuario">
+								<option disabled selected>Selecione o tipo de usuário</option>
+								<option  value="adm">
+									Administrador
+								</option>
+								<option  value="normal">
+									Normal
+								</option>
+							</select>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='cancelUsuario()' type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 						<button (click)='cadastrarUsuario()' type="button" class="btn btn-success"
 							data-dismiss="modal">Cadastrar Usuario</button>
 					</div>
@@ -361,41 +386,45 @@
 						<form>
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Usuario</label>
-								<input [(ngModel)]="usuarioSelecionado.nomeUsuario" type="text" class="form-control"
+								<input [(ngModel)]="usuario.nomeUsuario" type="text" class="form-control"
 									name="nomeUsuarioEditar" id="nomeUsuarioEditar" placeholder="Digite o Nome">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Email</label>
-								<input [(ngModel)]="usuarioSelecionado.email" type="text" class="form-control"
+								<input [(ngModel)]="usuario.email" type="text" class="form-control"
 									name="emailEditar" id="emailEditar" placeholder="Digite o email">
 							</div>
-							<div class="form-group">
+							<!--<div class="form-group">
 								<label for="formGroupExampleInput3">Senha</label>
 								<input (input)='confirmeSenha($event)' type="password" class="form-control"
 									name="senhaEditar" id="senhaEditar" placeholder="Digite a senha">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput4">Confirmar Senha</label>
-								<input [(ngModel)]="usuarioSelecionado.senha" type="password" class="form-control"
+								<input [(ngModel)]="usuario.senha" type="password" class="form-control"
 									name="confirmarSenhaEditar" id="confirmarSenhaEditar"
 									placeholder="Confirme a senha">
-							</div>
-							<div class="form-group">
-								<label for="formGroupExampleInput5">Tipo Usuario</label>
-								<input [(ngModel)]="usuarioSelecionado.tipoUsuario" type="text" class="form-control"
-									name="tipoUsuarioEditar" id="tipoUsuarioEditar" placeholder="Tipo de usuario">
-							</div>
+							</div>-->
+							<label class="mr-2" for="formGroupExampleInput5">Tipo Usuario </label>
+							<select [(ngModel)]="usuario.tipoUsuario"  name="editarTipoUsuario"
+								id="editarTipoUsuario">
+								<option disabled selected>Selecione o tipo de usuário</option>
+								<option  value="adm">
+									Administrador
+								</option>
+								<option  value="normal">
+									Normal
+								</option>
+							</select>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='cancelUsuario()' type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 						<button (click)='editarUsuario()' type="button" class="btn btn-success"
-							data-dismiss="modal">Cadastrar Usuario</button>
+							data-dismiss="modal">Editar Usuario</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 </div>
