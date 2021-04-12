@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 4rem;
-  padding-top: 7rem;
+  padding-top: 10px;
   color: #540388;
 }
 
@@ -44,12 +44,10 @@
   }
 
   .teste::after  {
-
     padding-top: 5rem;
     position: absolute;
     opacity: 0.6;
     z-index: -1;
-
   }
 
 
