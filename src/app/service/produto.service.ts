@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Produto } from '../model/Produto';
+import { ProdutoCarrinho } from '../model/Produto-Carrinho';
 
 @Injectable({
   providedIn: 'root'
@@ -40,16 +41,33 @@ export class ProdutoService {
    ----------  Funções do Carrinho ----------
   */
 
-  addToCart(produtoCarrinho: Produto): void {
-    const carrinho: Produto[] = JSON.parse(localStorage.getItem('produto') || '[]');
-    carrinho.push(produtoCarrinho);
+  addToCart(produto: Produto) {
+        
+    const carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
+    
+    const produtoCarrinho: ProdutoCarrinho = { 
+      qtd: 1, 
+      produto: produto,
+      totalProduto: produto.preco
+    }
 
-    localStorage.setItem("produto", JSON.stringify(carrinho));
+    carrinho.push(produtoCarrinho);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }
 
-  getProdutosCarrinho():Produto[] {
-    const carrinho: Produto[] = JSON.parse(localStorage.getItem('produto') || '[]');
+
+  getProdutosCarrinho():ProdutoCarrinho[] {
+    const carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
     return carrinho;
   }
 
+  removeCartProduct(produto: Produto){
+    let carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
+
+    carrinho = carrinho.filter((item) => item.produto.id !== produto.id);
+
+    alert("Registro excluído");
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  }
 }
