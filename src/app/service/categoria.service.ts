@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { Categoria } from '../model/Categoria';
 
 @Injectable({
@@ -12,6 +13,10 @@ export class CategoriaService {
     private http: HttpClient
   ) { }
 
+  token={
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
+
   getAllCategoria(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>('http://localhost:8080/categoria')
   }
@@ -20,20 +25,22 @@ export class CategoriaService {
     return this.http.get<Categoria>(`http://localhost:8080/categoria/${id}`)
   }
 
-  getByNomeCategoria(nome: string): Observable<Categoria[]>{
-    return this.http.get<Categoria[]>(`http://localhost:8080/categoria/${nome}`)
+  getByNomeCategoria(nomeCategoria: string): Observable<Categoria>{
+    return this.http.get<Categoria>(`http://localhost:8080/categoria/${nomeCategoria}`)
   }
-
+  
   postCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.post<Categoria>('http://localhost:8080/categoria', categoria)
+    return this.http.post<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': environment.token}})
   }
 
   putCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.put<Categoria>('http://localhost:8080/categoria', categoria)
+    return this.http.put<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': environment.token}})
   }
 
   deleteCategoria(id: number) {
-    return this.http.delete(`http://localhost:8080/categoria/${id}`)
+    return this.http.delete(`http://localhost:8080/categoria/${id}`, 
+    {headers: {'Authorization': environment.token}})
   }
-
+  
+  
 }

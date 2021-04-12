@@ -70,16 +70,27 @@ export class LoginComponent implements OnInit {
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
 
+
+      if(this.userLogin.tipoUsuario == "normal"){
+        $('#modalLogin').hide()
+
       $('#modalLogin').hide()
+
       $('.modal-backdrop').hide()
       alert("Welcome!")
+      } else {
+        this.router.navigate(['/adm'])
+      }
+      
 
     } , err => {
 
       if(err.status == 401) {
         alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
-      }
+     
+   }
     })
   }
+
 
 }
