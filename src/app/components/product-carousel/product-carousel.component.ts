@@ -43,4 +43,13 @@ export class ProductCarouselComponent implements OnInit {
       this.listaCategorias = resp
     })
   }
+
+  /*
+   ----------  Funções do Carrinho ----------
+  */
+
+   addToCart(produto: Produto) {
+    this.produtoService.addToCart(produto);
+  }
+  
 }
