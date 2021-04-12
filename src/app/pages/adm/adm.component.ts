@@ -88,7 +88,7 @@ export class AdmComponent implements OnInit {
 
   selecionarCategoria(id: number){
     this.categoriaService.getByIdCategoria(id).subscribe((resp: Categoria)=>{
-    this.categoria = resp
+    this.categoriaSelecionada = resp
   })
     console.log(this.categoriaSelecionada)
   }
@@ -105,8 +105,8 @@ export class AdmComponent implements OnInit {
       cancelButtonText:'Não'
     }).then((result) => {
       if (result.isConfirmed) {
-      this.categoriaService.putCategoria(this.categoria).subscribe((resp: Categoria)=>{
-      this.categoria = resp
+      this.categoriaService.putCategoria(this.categoriaSelecionada).subscribe((resp: Categoria)=>{
+      this.categoriaSelecionada = resp
       this.getAllCategorias()
       })
         Swal.fire(
@@ -179,14 +179,15 @@ export class AdmComponent implements OnInit {
   }
 
   selecionarProduto(id: number){
+    
     this.produtoService.getByIdProduto(id).subscribe((resp: Produto)=>{
-      this.produto = resp
+      this.produtoSelecionado = resp
     })
   }
 
   editarProduto(){
     this.categoria.id = this.idCategoria
-    this.produto.categoria = this.categoria
+    this.produtoSelecionado.categoria = this.categoria
     Swal.fire({
       title: 'Você tem certeza que deseja editar esse Produto?',
       text: "",
@@ -198,8 +199,8 @@ export class AdmComponent implements OnInit {
       cancelButtonText:'Não'
     }).then((result) => {
       if (result.isConfirmed) {
-      this.produtoService.putProduto(this.produto).subscribe((resp: Produto)=>{
-      this.produto = resp
+      this.produtoService.putProduto(this.produtoSelecionado).subscribe((resp: Produto)=>{
+      this.produtoSelecionado = resp
       this.getAllProdutos()
       })
         Swal.fire(
@@ -273,7 +274,7 @@ export class AdmComponent implements OnInit {
 
   selecionarUsuario(id: number){
     this.authService.findByIdUsuario(id).subscribe((resp: Usuario)=>{
-      this.usuario = resp
+      this.usuarioSelecionado = resp
     })
   }
 
@@ -289,8 +290,8 @@ export class AdmComponent implements OnInit {
       cancelButtonText:'Não'
     }).then((result) => {
       if (result.isConfirmed) {
-      this.authService.editarUsuario(this.usuario).subscribe((resp: Usuario)=>{
-      this.usuario = resp
+      this.authService.editarUsuario(this.usuarioSelecionado).subscribe((resp: Usuario)=>{
+      this.usuarioSelecionado = resp
       this.getAllUsuarios()
       this.usuario = new Usuario 
       })
