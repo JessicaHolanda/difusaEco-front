@@ -57,21 +57,25 @@
     </div>
   </div>
   <!--/pesquisa-produto-->
-      <div class="card-columns mb-5">
+
+      <div class="card-columns mb-5 img-section2">
 
         <div *ngFor="let item of listaProdutos">
           <div class="card mt-5">
             <div class="green-bar"></div>
             <div class="img-container text-center m-auto w-75 pt-3">
-              <img class="card-img w-100 img-border" src="{{item.imagem}}" alt="Imagem card">
+              <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
             </div>
             <div class="card-body">
               <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-              <p class="card-text text-center">{{item.descricao}}</p>
-              <p class="card-price text-center"> {{item.preco}}</p>
+              <!-- <p class="card-text text-center">{{item.descricao}}</p> -->
+              <p class="card-price text-center">R$ {{item.preco}},00</p>
               <div class="btn-container">
-                <button button type="button" class="btn" (click)="addToCart(item)">
-                  Comprar
+                <button button type="button" class="btn btnMore">
+                  Saiba Mais
+                </button>
+                <button button type="button" class="btn btnCart" (click)="addToCart(item)">
+                  Carrinho
                 </button>
               </div>
 

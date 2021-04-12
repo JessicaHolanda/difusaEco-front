@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'sobre-projeto', component: SobreProjetoComponent},
 
   {path: 'adm', component: AdmComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
 
   {path: 'carrinho', component: CarrinhoComponent},
 

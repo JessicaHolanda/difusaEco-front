@@ -1,4 +1,4 @@
-<!--Carrossel -->
+<!-- Carrossel -->
 <div class="container">
   <h2 class="text-center m-5 main-products">PRODUTOS EM DESTAQUE</h2>
   <div class="d-flex justify-content-center">
@@ -25,15 +25,15 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}}</p>
+                <p class="card-price text-center">R$ {{item.preco}},00</p>
+              </div>
                 <div class="btn-container">
-                  <button button type="button" class="btn">
+                  <button button type="button" class="btn btnMore">
                     Saiba Mais
                   </button>
-                  <button button type="button" class="btn">
+                  <button button type="button" class="btn btnCart" (click)="addToCart(item)">
                     Carrinho
                   </button>
-                </div>
               </div>
             </div>
           </div>
@@ -48,21 +48,21 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}}</p>
+                <p class="card-price text-center">R$ {{item.preco}},00</p>
+              </div>
                 <div class="btn-container">
-                  <button button type="button" class="btn">
+                  <button button type="button" class="btn btnMore">
                     Saiba Mais
                   </button>
-                  <button button type="button" class="btn">
+                  <button button type="button" class="btn btnCart" (click)="addToCart(item)">
                     Carrinho
                   </button>
-                </div>
               </div>
             </div>
           </div>
         </div>
         <!--Third slide-->
-        <div class="carousel-item ">
+        <div class="carousel-item">
           <div class="card-columns d-flex justify-space-evenly">
             <div class="card card-produtos" *ngFor='let item of listaProdutos | slice:6:9'>
               <div class="header-card-produtos"></div>
@@ -71,16 +71,16 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}}</p>
+                <p class="card-price text-center">R$ {{item.preco}},00</p>
+              </div>
                 <div class="btn-container">
-                  <button button type="button" class="btn">
+                  <button button type="button" class="btn btnMore">
                     Saiba Mais
                   </button>
-                  <button button type="button" class="btn">
+                  <button button type="button" class="btn btnCart" (click)="addToCart(item)">
                     Carrinho
                   </button>
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -89,3 +89,5 @@
   </div>
 </div>
 <!--Carrossel -->
+
+
