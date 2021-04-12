@@ -9,8 +9,8 @@ import { ProdutoService } from 'src/app/service/produto.service';
   styleUrls: ['./produto-carrinho.component.css']
 })
 export class ProdutoCarrinhoComponent implements OnInit {
-  produtoCarrinho: ProdutoCarrinho;
-
+  public produtoCarrinho: ProdutoCarrinho;
+  public qtd: number;
 
   constructor(private produtoService: ProdutoService) { }
 
@@ -26,9 +26,27 @@ export class ProdutoCarrinhoComponent implements OnInit {
     }
 }
 
-    removerProduto(produto: Produto){
-      this.produtoService.removeCartProduct(produto);
-      this.removeProduct.emit(true);
+  removerProduto(produto: Produto){
+    this.produtoService.removeCartProduct(produto);
+    this.removeProduct.emit(true);
   }
+
+  adicionar(){
+    this.produtoService.somaQtdProduto(this.produtoCarrinho);
+    this.produtoCarrinho.qtd ++;
+
+  }
+
+  subtrair(){
+    if(this.produtoCarrinho.qtd > 0){
+      this.produtoService.subtraiQtdProduto(this.produtoCarrinho);
+      this.produtoCarrinho.qtd --;
+    } 
+  }
+
+  // process(qtd: number){
+    
+  // }
+
 
 }

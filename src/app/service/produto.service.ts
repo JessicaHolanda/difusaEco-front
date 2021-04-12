@@ -70,4 +70,34 @@ export class ProdutoService {
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }
+
+  // SOMA
+  somaQtdProduto(produtoCarrinho: ProdutoCarrinho){
+    let carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
+
+    for (const i in carrinho) {
+     if (carrinho[i].produto.id == produtoCarrinho.produto.id) {
+         carrinho[i].qtd += 1;
+       	 break; 
+     }
+   }
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  }
+
+  // SUBTRAÇÃO
+
+  subtraiQtdProduto(produtoCarrinho: ProdutoCarrinho){
+    let carrinho: ProdutoCarrinho[] = JSON.parse(localStorage.getItem('carrinho') || '[]');
+
+    for (const i in carrinho) {
+     if (carrinho[i].produto.id == produtoCarrinho.produto.id) {
+         carrinho[i].qtd -= 1;
+       	 break; 
+     }
+   }
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  }
+
 }

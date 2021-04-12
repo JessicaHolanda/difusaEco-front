@@ -35,9 +35,9 @@
     <div class="col-md-5 col-12 d-flex product-values">
       <!--Quantidade-->
       <div class="qtd-container d-flex">
-        <button class="btn-qtd btn" type="button">-</button>
-        <input class="input-qtd" type="number" min="1">
-        <button class="btn-qtd btn" type="button">+</button>
+        <button class="btn-qtd btn" id="plus" type="button" (click)="subtrair()" >-</button>
+          <div> {{produtoCarrinho?.qtd}} </div>
+        <button class="btn-qtd btn" id="minus" type="button" (click)="adicionar()" >+</button>
       </div>
       <!--END Quantidade-->
 
@@ -56,7 +56,7 @@
   <!--Remover produto do carrinho-->
   <div class="remove-product-container">
     <div>
-      <i class="fas icon-remove fa-trash-alt" (click)="removerProduto(produtoCarrinho?.produto)"></i>
+      <i class="fas icon-remove fa-trash-alt" (click)="removerProduto(produtoCarrinho.produto)"></i>
     </div>
   </div>
 </div>
