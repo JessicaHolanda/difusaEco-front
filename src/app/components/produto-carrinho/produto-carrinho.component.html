@@ -25,7 +25,7 @@
 
       <!--Preço-->
       <div>
-        <div>Valor unitário: R$ {{produtoCarrinho?.produto?.preco}}</div>
+        <div>R$ {{produtoCarrinho?.produto?.preco}}</div>
       </div>
       <!--END Preço-->
     </div>
@@ -36,7 +36,7 @@
       <!--Quantidade-->
       <div class="qtd-container d-flex">
         <button class="btn-qtd btn" id="plus" type="button" (click)="subtrair()" >-</button>
-          <div> {{produtoCarrinho?.qtd}} </div>
+          <div class="pr-2 pl-2"> {{produtoCarrinho?.qtd}} </div>
         <button class="btn-qtd btn" id="minus" type="button" (click)="adicionar()" >+</button>
       </div>
       <!--END Quantidade-->
