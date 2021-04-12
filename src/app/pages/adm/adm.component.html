@@ -210,7 +210,7 @@
 						<form>
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Produto</label>
-								<input [(ngModel)]="produto.nomeProduto" type="text" class="form-control"
+								<input [(ngModel)]="produtoSelecionado.nomeProduto" type="text" class="form-control"
 									name="nomeEditarProduto" id="nomeEditarProduto" placeholder="Digite o Nome">
 							</div>
 							<div class="form-group">
@@ -224,22 +224,22 @@
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput3">Quantidade</label>
-								<input [(ngModel)]="produto.quantidade" type="text" class="form-control"
+								<input [(ngModel)]="produtoSelecionado.quantidade" type="text" class="form-control"
 									name="editarQuantidade" id="editarQuantidade" placeholder="Digite a quantidade">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput4">Preço</label>
-								<input [(ngModel)]="produto.preco" type="text" class="form-control"
+								<input [(ngModel)]="produtoSelecionado.preco" type="text" class="form-control"
 									name="editarPreco" id="editarPreco" placeholder="Digite o preço">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput5">Imagem</label>
-								<input [(ngModel)]="produto.imagem" type="text" class="form-control"
+								<input [(ngModel)]="produtoSelecionado.imagem" type="text" class="form-control"
 									name="editarImagem" id="editarImagem" placeholder="Imagem inicial">
 							</div>
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Descrição do produto</label>
-								<textarea [(ngModel)]="produto.descricao" class="form-control"
+								<textarea [(ngModel)]="produtoSelecionado.descricao" class="form-control"
 									name="editarDescricao" id="editarDescricao" rows="3"></textarea>
 							</div>
 						</form>
@@ -299,7 +299,7 @@
 						<form>
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome da Categoria</label>
-								<input [(ngModel)]="categoria.nomeCategoria" type="text"
+								<input [(ngModel)]="categoriaSelecionada.nomeCategoria" type="text"
 									name="nomeCategoriaSelecionada" class="form-control" id="nomeCategoriaSelecionada"
 									placeholder="Digite a categoria">
 							</div>
@@ -386,12 +386,12 @@
 						<form>
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Usuario</label>
-								<input [(ngModel)]="usuario.nomeUsuario" type="text" class="form-control"
+								<input [(ngModel)]="usuarioSelecionado.nomeUsuario" type="text" class="form-control"
 									name="nomeUsuarioEditar" id="nomeUsuarioEditar" placeholder="Digite o Nome">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Email</label>
-								<input [(ngModel)]="usuario.email" type="text" class="form-control"
+								<input [(ngModel)]="usuarioSelecionado.email" type="text" class="form-control"
 									name="emailEditar" id="emailEditar" placeholder="Digite o email">
 							</div>
 							<!--<div class="form-group">
@@ -406,7 +406,7 @@
 									placeholder="Confirme a senha">
 							</div>-->
 							<label class="mr-2" for="formGroupExampleInput5">Tipo Usuario </label>
-							<select [(ngModel)]="usuario.tipoUsuario"  name="editarTipoUsuario"
+							<select [(ngModel)]="usuarioSelecionado.tipoUsuario"  name="editarTipoUsuario"
 								id="editarTipoUsuario">
 								<option disabled selected>Selecione o tipo de usuário</option>
 								<option  value="adm">
