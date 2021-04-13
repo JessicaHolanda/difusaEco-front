@@ -1,0 +1,88 @@
+<!-- <div class="mt-5 mb-5" id="receipt">
+  <a
+    name=""
+    style="position: relative; float: right;"
+    id=""
+    class="btn btn-primary"
+    href="javascript:;;"
+    role="button"
+    (click)="downloadReceipt()"
+    ><i class="fa fa-download"></i> Recibo</a
+  > -->
+<div class="p-5">
+  <div class="row">
+    <div
+      class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3"
+      style="margin: auto;"
+    >
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <address>
+            <strong>Difusa Eco Ltda.</strong>
+            <br />
+            São Paulo - SP
+            <br />
+            <abbr title="Phone">P:</abbr> (11) 6666-6666
+          </address>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+          <p>
+            <em>Data: {{ date | date }}</em>
+          </p>
+          <p>
+            <em>Recibo #: 34522677W</em>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-center">
+          <h1>Recibo</h1>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <td></td>
+              <th class="text-center">Qtd</th>
+              <th class="text-center">Valor</th>
+              <th class="text-center">Total</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produto of produtosCarrinho">
+              <td class="col-md-4">
+                <h6>
+                  <em>{{ produto.produto.nomeProduto }}</em>
+                </h6>
+              </td>
+              <td></td>
+              <td class="col-md-1 text-center">{{ produto.qtd }}</td>
+              <td class="col-md-1 text-center">R$ {{ produto.produto.preco }}</td>
+              <td class="col-md-3 text-center">R$ {{ produto.totalProduto }}</td>
+            </tr>
+            <!-- <tr>
+              <td></td>
+              <td></td>
+            </tr> -->
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="text-right">
+                <p><strong>Total: </strong></p>
+              </td>
+              <td class="text-center text-danger">
+                <h4>
+                  <strong>R$ {{ precoTotal1 }}</strong>
+                </h4>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

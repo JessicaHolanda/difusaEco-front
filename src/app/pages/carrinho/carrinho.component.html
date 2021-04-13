@@ -30,23 +30,29 @@
 
         <!-- Botão de checkout-->
         <div class=" btn-container mt-3 d-flex justify-content-center">
-          <button type="button" class="btn ">Finalizar Compra</button>
+          <button type="button" class="btn " routerLink='/carrinho/recibo'>Finalizar Compra</button>
         </div>
         <!--END Botão de checkout-->
 
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="mb-5 mt-5"></div>
+      <!-- <div class="col-6">
         <img src="../../../assets/img/Wallet.svg" >
-      </div>
+      </div> -->
     </div>
   </div>
 
-  <div class="carrinho-vazio" *ngIf="produtosCarrinho && produtosCarrinho.length == 0">
+  <div class="carrinho-vazio title text-center" *ngIf="produtosCarrinho && produtosCarrinho.length == 0">
     <h1>Carrinho Vazio!</h1>
-    <p>Teste</p>
-    <img src="../../../assets/img/search.svg" alt="">
+
+      <div class="">
+        <img src="../../../assets/img/search.svg" alt="">
+      </div>
+
+
+
   </div>
 
 </div>

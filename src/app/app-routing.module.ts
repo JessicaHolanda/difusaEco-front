@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LandingpageComponent } from './pages/landingpage/landingpage.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { SobreProjetoComponent } from './pages/sobre-projeto/sobre-projeto.component';
+import { ReciboComponent } from './pages/recibo/recibo.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
 
   {path: 'carrinho', component: CarrinhoComponent},
+  {path: 'carrinho/recibo', component: ReciboComponent},
 
   {path: 'adm', component: AdmComponent},
   {path: 'login', component: LoginComponent}

@@ -1,3 +1,24 @@
+.title {
+  font-family: Amatic SC;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4rem;
+  padding-top: 10px;
+  color: #540388;
+}
+
+.erase{
+    color: #540388;
+}
+
+.action-icon{
+    cursor: pointer;
+}
+
+.table{
+    border: 1px solid lightgrey;
+}
+
 .btn {
     text-align: center;
     left: 0%;
