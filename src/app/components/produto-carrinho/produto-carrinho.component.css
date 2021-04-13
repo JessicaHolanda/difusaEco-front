@@ -35,15 +35,13 @@
 
 .btn-qtd {
   text-align: center;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
   background: #27AE60;
   border-radius: 6px;
   width: 27px;
   height: 27px;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .icon-remove {

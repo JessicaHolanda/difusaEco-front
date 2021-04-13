@@ -2,62 +2,52 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="text-center">Bem Vindo Administrador</h1>
-			<h4 class="mb-3 text-center">O que deseja fazer?</h4>
+			<h4 class="text-center title">Painel administrador</h4>
 		</div>
 	</div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center ">Meus Produtos Cadastrados</h1>
-      <div class="row">
-        <div class="col-md-4 col-12">
-        </div>
-      </div>
-    </div>
-  </div>
 
-</div>
-
-
-	<div class="row">
-
+	<div class="row my-5 mb-5">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs " id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link active text-black-50" id="home-tab" data-toggle="tab" href="#home" role="tab"
-						aria-controls="home" aria-selected="true">Produtos Cadastrados</a>
+					<a class="nav-link active text-black-50 font-weight-bold" id="home-tab" data-toggle="tab" href="#home" role="tab"
+						aria-controls="home" aria-selected="true">Produtos</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-black-50 ml-5" id="profile-tab" data-toggle="tab" href="#perfil" role="tab"
-						aria-controls="profile" aria-selected="false">Categorias Cadastradas</a>
+					<a class="nav-link text-black-50 ml-4 font-weight-bold" id="profile-tab" data-toggle="tab" href="#perfil" role="tab"
+						aria-controls="profile" aria-selected="false">Categorias</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-black-50 ml-5" id="contact-tab" data-toggle="tab" href="#contato" role="tab"
-						aria-controls="contact" aria-selected="false">Usuarios Cadastrados</a>
+					<a class="nav-link text-black-50 ml-4 font-weight-bold" id="contact-tab" data-toggle="tab" href="#contato" role="tab"
+						aria-controls="contact" aria-selected="false">Usuarios</a>
 				</li>
 			</ul>
-			<div class="tab-content" id="myTabContent">
+			<div class="tab-content bg-white p-3 mb-5" id="myTabContent">
 				<div class="tab-pane fade show active th" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<button type="button" class=" btn btn-light text-black-50 mt-3 mb-3" data-toggle="modal"
+          <div class="text-center mt-2 mb-3 w-100">
+
+					<button type="button" class="btn" data-toggle="modal"
 						data-target="#ModalProduto">
-						Cadastro de Produtos
+						Novo produto
 					</button>
-					<table class="table th2">
+          </div>
+					<table class="table table-sm th2">
 						<thead>
-							<tr>
+							<tr class="text-center">
 								<th scope="col">#</th>
-								<th scope="col">Nome do produto</th>
+								<th scope="col">Nome</th>
 								<th scope="col">Categoria</th>
 								<th scope="col">Quantidade</th>
 								<th scope="col">Preço</th>
 								<th scope="col">Imagem</th>
 								<th scope="col">Descrição</th>
+                <th scope="col">Ação</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let item of listaProdutos">
-								<th scope="row">{{item.id}}</th>
+							<tr class="text-center" *ngFor="let item of listaProdutos">
+								<td >{{item.id}}</td>
 								<td>{{item.nomeProduto}}</td>
 								<td>{{item.categoria.nomeCategoria}}</td>
 								<td>{{item.quantidade}} un.</td>
@@ -65,47 +55,47 @@
 								<td>{{item.imagem}}</td>
 								<td>{{item.descricao}}</td>
 								<td>
-									<button type="button" (click)="selecionarProduto(item.id)"
-										class="  btn btn-light text-black-50 mt-50" data-toggle="modal"
-										data-target="#ModalEditarProduto">Editar
-									</button>
-								</td>
-								<td>
-									<button type="button" (click)="apagarProduto(item.id)"
-										class="  btn btn-light text-black-50 mt-50">Apagar
-									</button>
+                  <div class="d-flex justify-content-center align-items-center">
+                  <div class="edit mr-3 action-icon" (click)="selecionarProduto(item.id)" data-toggle="modal"
+										data-target="#ModalEditarProduto">
+                    <i class="fas fa-edit"></i>
+                   </div>
+                    <div class="erase action-icon" (click)="apagarProduto(item.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </div>
+                </div>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div class="tab-pane fade th" id="perfil" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="tab-pane fade th mb-5" id="perfil" role="tabpanel" aria-labelledby="profile-tab">
 					<button type="button" class="  btn btn-light text-black-50 mt-50 mt-3 mb-3" data-toggle="modal"
 						data-target="#ModalCategoria">
-						Cadastro de Categorias
+						Nova categoria
 					</button>
-					<table class="table">
+					<table class="table table-sm">
 						<thead>
-							<tr>
+							<tr class="text-center">
 								<th scope="col">#</th>
 								<th scope="col">Nome da Categoria</th>
+                <th scope="col">Ação</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let item of listaCategorias">
-								<th scope="row">{{item.id}}</th>
+							<tr class="text-center" *ngFor="let item of listaCategorias">
+								<td>{{item.id}}</td>
 								<td>{{item.nomeCategoria}}</td>
 								<td>
-									<button (click)='selecionarCategoria(item.id)' type="button"
-										class="  btn btn-light text-black-50 mt-50" data-toggle="modal"
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="edit mr-3 action-icon" (click)='selecionarCategoria(item.id)' data-toggle="modal"
 										data-target="#ModalEdicaoCategoria">
-										Editar
-									</button>
-								</td>
-								<td>
-									<button (click)='apagarCategoria(item.id)' type="button"
-										class="  btn btn-light text-black-50 mt-50">Apagar
-									</button>
+                    <i class="fas fa-edit"></i>
+                   </div>
+                    <div class="erase action-icon" (click)='apagarCategoria(item.id)'>
+                      <i class="fas fa-trash-alt"></i>
+                    </div>
+                </div>
 								</td>
 							</tr>
 						</tbody>
@@ -114,41 +104,43 @@
 				<div class="tab-pane fade th" id="contato" role="tabpanel" aria-labelledby="contact-tab">
 						<button type="button" class="  btn btn-light text-black-50 mb-3 mt-3" aling="center" data-toggle="modal"
 							data-target="#ModalUsuario">
-							Cadastro de Usuarios
+							Novo usuário
 						</button>
-					<table class="table th2">
+					<table class="table th2 table-sm">
 						<thead>
-							<tr>
+							<tr class="text-center">
 								<th scope="col">#</th>
 								<th scope="col">Nome</th>
 								<th scope="col">Email</th>
-								<th scope="col">Senha</th>
+								<!-- <th scope="col">Senha</th> -->
 								<th scope="col">Tipo Usuário</th>
+                <th scope="col">Ação</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let item of listaUsuarios">
-								<th scope="row">{{item.id}}</th>
+							<tr class="text-center" *ngFor="let item of listaUsuarios">
+								<td>{{item.id}}</td>
 								<td>{{item.nomeUsuario}}</td>
 								<td>{{item.email}}</td>
 								<!--<td>{{item.senha}}</td>-->
 								<td>{{item.tipoUsuario}}</td>
 								<td>
-									<button type="button" (click)="selecionarUsuario(item.id)"
-										class="  btn btn-light text-black-50 mt-50" data-toggle="modal"
-										data-target="#ModalEditarUsuario">Editar
-										</button>
-								</td>
-								<td>
-									<button type="button" (click)="apagarUsuario(item.id)"
-										class=" btnD text-black-50 mt-50">Apagar
-									</button>
+                  <div class="d-flex justify-content-center align-items-center">
+                  <div class="edit mr-3 action-icon" (click)="selecionarUsuario(item.id)" data-toggle="modal"
+										data-target="#ModalEditarUsuario">
+                    <i class="fas fa-edit"></i>
+                   </div>
+                    <div class="erase action-icon" (click)="apagarUsuario(item.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </div>
+                </div>
 								</td>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
+
 
 
 		<!-- Modal CADASTRAR produto-->
@@ -440,9 +432,13 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
+	</div>
+=======
 
 	</div>
 
 
 
 
+>>>>>>> 1df431e766b8f3b867ead4ca1fb2f7f43a7791aa

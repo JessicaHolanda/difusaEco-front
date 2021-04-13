@@ -16,6 +16,7 @@ export class ProdutoCarrinhoComponent implements OnInit {
   constructor(private produtoService: ProdutoService) { }
 
   @Output() public removeProduct= new EventEmitter();
+  @Output() public attValorTotal= new EventEmitter();
 
   ngOnInit(): void {
   }
@@ -30,6 +31,7 @@ export class ProdutoCarrinhoComponent implements OnInit {
   removerProduto(produto: Produto){
     this.produtoService.removeCartProduct(produto);
     this.removeProduct.emit(true);
+    this.attValorTotal.emit(true)
   }
 
   async adicionar(){
@@ -50,6 +52,7 @@ export class ProdutoCarrinhoComponent implements OnInit {
     this.novoTotalProduto = this.produtoCarrinho.produto.preco * this.produtoCarrinho.qtd;
     this.produtoCarrinho.totalProduto = this.novoTotalProduto;
     await this.produtoService.atualizarTotalProduto(this.produtoCarrinho)
+    this.attValorTotal.emit(true)
   }
 
 

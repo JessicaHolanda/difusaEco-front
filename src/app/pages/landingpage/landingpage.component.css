@@ -7,6 +7,12 @@
   color: #540388;
 }
 
+.texto-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
   text-align: center;
   left: 0%;
@@ -51,13 +57,16 @@
   }
 
 
-.img-section2 {
+/* .img-section2 {
     background-image: url("../../../assets/img/folhas.svg");
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-}
+<<<<<<< HEAD
+} */
+
 
 .description{
   font-size: larger;
 }
+

@@ -20,6 +20,7 @@ import { ProdutoCarrinhoComponent } from './components/produto-carrinho/produto-
 
 import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { ReciboComponent } from './pages/recibo/recibo.component';
 
 
 
@@ -43,6 +44,7 @@ import { OrderModule } from 'ngx-order-pipe';
     HeaderAdmComponent,
     LoginComponent,
     ProductCarouselComponent,
+    ReciboComponent,
   ],
   imports: [
     BrowserModule,

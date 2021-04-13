@@ -1,41 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from 'src/app/model/Produto';
 import { ProdutoCarrinho } from 'src/app/model/Produto-Carrinho';
 import { ProdutoService } from 'src/app/service/produto.service';
 
 @Component({
-  selector: 'app-carrinho',
-  templateUrl: './carrinho.component.html',
-  styleUrls: ['./carrinho.component.css']
+  selector: 'app-recibo',
+  templateUrl: './recibo.component.html',
+  styleUrls: ['./recibo.component.css']
 })
-export class CarrinhoComponent implements OnInit {
-  produtosCarrinho: ProdutoCarrinho[];
-  carrinhoFinal:  ProdutoCarrinho[];
-  precoTotal = 0;
+export class ReciboComponent implements OnInit {
+  public produtosCarrinho: ProdutoCarrinho[];
+  date: number;
+  public precoTotal1 = 0;
+
 
   constructor(private produtoService: ProdutoService) {
+    this.date = Date.now();
     this.getTotal();
   }
 
-  ngOnInit() {
+  ngOnInit(){
     this.getProdutoCarrinho();
+  }
+
+  downloadReceipt() {
+    const data = document.getElementById("receipt");
   }
 
   getProdutoCarrinho(){
     this.produtosCarrinho = this.produtoService.getProdutosCarrinho();
-    console.log(this.produtosCarrinho.length)
   }
 
   getTotal(){
     const produtos = this.produtoService.getProdutosCarrinho();
 
-    this.carrinhoFinal = produtos;
-    console.log(produtos);
-
-      this.precoTotal=0;
+      this.precoTotal1=0;
       produtos.forEach((produto) => {
-      this.precoTotal += produto.totalProduto;
+      this.precoTotal1 += produto.totalProduto;
     });
   }
-
 }
