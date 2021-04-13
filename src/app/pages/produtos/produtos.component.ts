@@ -2,7 +2,7 @@ import { Categoria } from './../../model/Categoria';
 import { CategoriaService } from './../../service/categoria.service';
 
 import { Produto } from './../../model/Produto';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProdutoService } from 'src/app/service/produto.service';
 
 @Component({
@@ -11,10 +11,15 @@ import { ProdutoService } from 'src/app/service/produto.service';
   styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent implements OnInit {
+
+
   produto: Produto = new Produto()
   listaProdutos: Produto[]
   idProduto: number
   nomeProduto: string
+  produtoSelecionado: Produto = new Produto()
+
+  produtoCarregado: boolean
 
   categoria: Categoria = new Categoria()
   listaCategorias: Categoria[]
@@ -63,6 +68,14 @@ export class ProdutosComponent implements OnInit {
         this.listaProdutos = resp;
       })
     }
+  }
+
+   // Abrir modal com produto selecionado
+
+   selecionarProduto(produto: Produto){
+ 
+    this.produtoSelecionado = produto
+    
   }
 
   /*
