@@ -9,7 +9,7 @@
         <div class="row">
 
           <div class="col-12 mb-2 " *ngFor="let produto of produtosCarrinho">
-            <app-produto-carrinho (removeProduct)="getProdutoCarrinho()" [produto]="produto">
+            <app-produto-carrinho (removeProduct)="getProdutoCarrinho()" [produto]="produto" (attValorTotal)="getTotal()">
 
             </app-produto-carrinho>
           </div>
@@ -24,9 +24,7 @@
             Resumo do Pedido
           </p>
           <div class="totals-content">
-            <p>Valor dos produtos: R$ 1000,00</p>
-            <p>Valor da entrega: R$ 1000,00</p>
-            <p>Valor total: R$ 1000,00</p>
+            <p>Valor dos produtos: R$ {{ precoTotal }} </p>
           </div>
         </div>
 

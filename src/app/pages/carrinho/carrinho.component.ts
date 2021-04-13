@@ -10,10 +10,14 @@ import { ProdutoService } from 'src/app/service/produto.service';
 })
 export class CarrinhoComponent implements OnInit {
   produtosCarrinho: ProdutoCarrinho[];
+  carrinhoFinal:  ProdutoCarrinho[];
+  precoTotal = 0;
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService) {
+    this.getTotal();
+  }
 
- 
+
   ngOnInit() {
     this.getProdutoCarrinho();
   }
@@ -21,6 +25,18 @@ export class CarrinhoComponent implements OnInit {
   getProdutoCarrinho(){
     this.produtosCarrinho = this.produtoService.getProdutosCarrinho();
     console.log(this.produtosCarrinho.length)
+  }
+
+  getTotal(){
+    const produtos = this.produtoService.getProdutosCarrinho();
+
+    this.carrinhoFinal = produtos;
+    console.log(produtos);
+
+      this.precoTotal=0;
+      produtos.forEach((produto) => {
+      this.precoTotal += produto.totalProduto;
+    });
   }
 
 }
