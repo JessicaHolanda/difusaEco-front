@@ -414,6 +414,7 @@
 									name="confirmarSenhaEditar" id="confirmarSenhaEditar"
 									placeholder="Confirme a senha">
 							</div>-->
+
             <label class="mr-2" for="formGroupExampleInput5">Tipo Usuario </label>
             <select [(ngModel)]="usuarioSelecionado.tipoUsuario" name="editarTipoUsuario" id="editarTipoUsuario">
               <option disabled selected>Selecione o tipo de usuário</option>
@@ -435,3 +436,27 @@
     </div>
   </div>
 </div>
+
+							<label class="mr-2" for="formGroupExampleInput5">Tipo Usuario </label>
+							<select [(ngModel)]="usuarioSelecionado.tipoUsuario"  name="editarTipoUsuario"
+								id="editarTipoUsuario">
+								<option disabled selected>Selecione o tipo de usuário</option>
+								<option  value="adm">
+									Administrador
+								</option>
+								<option  value="normal">
+									Normal
+								</option>
+							</select>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button (click)='cancelUsuario()' type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<button (click)='editarUsuario()' type="button" class="btn btn-success"
+							data-dismiss="modal">Editar Usuario</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
