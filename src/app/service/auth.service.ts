@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
 import { Usuario } from '../model/Usuario';
 
@@ -16,6 +17,9 @@ export class AuthService {
     private http: HttpClient
   ) { }
   
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
   
 
   logar(userLogin: UserLogin): Observable<UserLogin>{
@@ -41,6 +45,37 @@ export class AuthService {
   deleteUsuario(id: number){
     
     return this.http.delete(`http://localhost:8080/usuarios/${id}`)
+  }
+
+  logado() {
+    let ok = false
+
+    if (environment.token != '') {
+      ok = true
+    }
+
+    return ok
+    
+  }
+
+  deslogado() {
+    let ok = false
+
+    if (environment.token == '') {
+      ok = true
+    }
+
+    return ok
+  }
+
+  adm() {
+    let ok = false
+
+    if (environment.tipoUsuario == 'adm') {
+      ok = true
+    }
+
+    return ok 
   }
   
 }

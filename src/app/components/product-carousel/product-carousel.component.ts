@@ -15,6 +15,7 @@ export class ProductCarouselComponent implements OnInit {
   produto: Produto = new Produto()
   listaProdutos: Produto[]
   nomeProduto: string
+  produtoSelecionado: Produto = new Produto()
 
   categoria: Categoria = new Categoria()
   listaCategorias: Categoria[]
@@ -43,4 +44,21 @@ export class ProductCarouselComponent implements OnInit {
       this.listaCategorias = resp
     })
   }
+
+  // Abrir modal com produto selecionado
+
+  selecionarProduto(produto: Produto){
+ 
+    this.produtoSelecionado = produto
+    
+  }
+
+  /*
+   ----------  Funções do Carrinho ----------
+  */
+
+   addToCart(produto: Produto) {
+    this.produtoService.addToCart(produto);
+  }
+  
 }
