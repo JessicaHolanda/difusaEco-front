@@ -1,7 +1,5 @@
 
-
 import { ProdutoCarrinho } from './../model/Produto-Carrinho';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -19,10 +17,6 @@ export class ProdutoService {
 
   token={
     headers: new HttpHeaders().set('Authorization', environment.token)
-  }
-
-  getAllProduto(): Observable<Produto[]>{
-    return this.http.get<Produto[]>("http://localhost:8080/produto")
   }
 
 

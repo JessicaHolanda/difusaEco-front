@@ -69,18 +69,26 @@ export class LoginComponent implements OnInit {
       environment.token = this.userLogin.token
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
+      environment.tipoUsuario = this.userLogin.tipoUsuario
 
-
-      if(this.userLogin.tipoUsuario == "normal"){
-        $('#modalLogin').hide()
+      $('#modalLogin').hide()
 
       $('#modalLogin').hide()
 
       $('.modal-backdrop').hide()
       alert("Welcome!")
-      } else {
-        this.router.navigate(['/adm'])
-      }
+
+
+      // if(this.userLogin.tipoUsuario == "normal"){
+      //   $('#modalLogin').hide()
+
+      // $('#modalLogin').hide()
+
+      // $('.modal-backdrop').hide()
+      // alert("Welcome!")
+      // } else {
+      //   this.router.navigate(['/adm'])
+      // }
       
 
     } , err => {
@@ -89,6 +97,11 @@ export class LoginComponent implements OnInit {
         alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
      
    }
+
+   if(err.status == 500) {
+    alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
+  }
+
     })
   }
 
