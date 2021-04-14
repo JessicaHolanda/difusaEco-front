@@ -30,3 +30,36 @@
   </owl-carousel-o>
 
 </div>
+
+<!-- MODAL Saiba Mais -->
+
+<div class="modal fade" id="ModalSaibaMais" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="TituloModalCentralizado">
+          {{produtoSelecionado.nomeProduto}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="img-container text-center m-auto w-75 pt-3">
+          <img class="card-img-top-produtos" src="{{produtoSelecionado.imagem}}" alt="Imagem card">
+        </div>
+        <p class="text-center p-3" id="ProdutoSelecionadoDescricao">
+          {{produtoSelecionado.descricao}}</p>
+        <p class="card-price text-center p-3" id="ProdutoSelecionadoPreco">R$
+          {{produtoSelecionado.preco}},00</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btnCart" (click)="addToCart(produtoSelecionado)"
+            data-dismiss="modal">Adicionar ao carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- /MODAL Saiba Mais -->

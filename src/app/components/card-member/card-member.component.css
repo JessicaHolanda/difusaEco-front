@@ -50,3 +50,9 @@ background-color: yellow;
   font-size: 12px;
   text-align: center;
 }
+
+@media screen and (max-width: 1125px){
+  .card {
+    min-height: 306px ;
+  }
+}

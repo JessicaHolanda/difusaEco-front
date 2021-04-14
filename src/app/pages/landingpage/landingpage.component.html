@@ -71,5 +71,19 @@
   </div>
   <!--/Sobrenos-->
 
+  <!-- OwlCarousel - Sobre nós - Responsivo  -->
+
+  <div class="container">
+
+    <owl-carousel-o [options]="customOptionsCardMembers">
+        <ng-template carouselSlide *ngFor="let member of members"> 
+          <div class="slide container">
+            <app-card-member [member]="member"></app-card-member>
+          </div>
+        </ng-template>
+    
+      </owl-carousel-o>
+    
+    </div>
 
 </div>

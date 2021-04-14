@@ -61,6 +61,8 @@ export class OwlCarouselComponent implements OnInit {
     this.produtoService.addToCart(produto);
   }
 
+  // OwlCarousel - Produtos - Responsivo
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
