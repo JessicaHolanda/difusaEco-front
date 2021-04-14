@@ -1,0 +1,32 @@
+<div class="container">
+
+<owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor='let item of listaProdutos | slice:0:9'> 
+      <div class="slide container">
+        <div class="card-columns d-flex justify-space-evenly">
+            <div class="card card-produtos">
+              <div class="header-card-produtos"></div>
+              <div class="img-container text-center m-auto w-75 pt-3">
+                <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+                <p class="card-price text-center">R$ {{item.preco}},00</p>
+              </div>
+              <div class="btn-container">
+                <button type="button" class="btn btnMore" data-toggle="modal" data-target="#ModalSaibaMais"
+                  (click)="selecionarProduto(item)">
+                  Saiba Mais
+                </button>
+                <button button type="button" class="btn btnCart" (click)="addToCart(item)">
+                  Carrinho
+                </button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </ng-template>
+
+  </owl-carousel-o>
+
+</div>

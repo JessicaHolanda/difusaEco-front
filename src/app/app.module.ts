@@ -21,7 +21,10 @@ import { ProdutoCarrinhoComponent } from './components/produto-carrinho/produto-
 import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { ReciboComponent } from './pages/recibo/recibo.component';
+import { OwlCarouselComponent } from './components/owl-carousel/owl-carousel.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -45,6 +48,7 @@ import { ReciboComponent } from './pages/recibo/recibo.component';
     LoginComponent,
     ProductCarouselComponent,
     ReciboComponent,
+    OwlCarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { ReciboComponent } from './pages/recibo/recibo.component';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    OrderModule
+    OrderModule,
+    BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

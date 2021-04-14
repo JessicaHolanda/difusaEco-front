@@ -19,6 +19,9 @@ export class ProdutoService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  getAllProduto(): Observable<Produto[]>{
+    return this.http.get<Produto[]>("http://localhost:8080/produto")
+  }
 
   getByIdProduto(id: number): Observable<Produto>{
     return this.http.get<Produto>(`http://localhost:8080/produto/${id}`)
