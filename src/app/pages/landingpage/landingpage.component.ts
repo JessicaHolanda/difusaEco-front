@@ -2,6 +2,7 @@ import { GithubService } from '../../service/github.service';
 import { GithubUser } from '../../model/GithubUser';
 import { Component, OnInit } from '@angular/core';
 import { Member } from 'src/app/model/Member';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-landingpage',
@@ -59,4 +60,28 @@ export class LandingpageComponent implements OnInit {
       console.log(e.message);
     }
   }
+
+    // OwlCarousel - Produtos - Responsivo
+
+    customOptionsCardMembers: OwlOptions = {
+      loop: true,
+      mouseDrag: false,
+      touchDrag: false,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 600,
+      navText: ['&#8249', '&#8250;'],
+      responsive: {
+        0: {
+          items: 1 
+        },
+        400: {
+          items: 2
+        },
+        760: {
+          items: 5
+        }
+      },
+      nav: true
+    }
 }

@@ -70,3 +70,7 @@
   font-size: larger;
 }
 
+.btnHome:hover {
+  opacity: 90%;
+}
+

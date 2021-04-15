@@ -14,11 +14,14 @@ import * as $ from 'jquery';
 export class LoginComponent implements OnInit {
 
   user: Usuario = new Usuario
+
   userLista: Usuario[]
   confirmarSenha: string
   tipoUsuario: string = "normal"
   userLogin: UserLogin = new UserLogin
-  loginOk: boolean = false
+
+  // Validação de Campos
+  nomeValido: boolean = false
 
   constructor(
     private authService: AuthService,
@@ -103,6 +106,23 @@ export class LoginComponent implements OnInit {
   }
 
     })
+  }
+
+  validaNome(event: any){
+    this.nomeValido = this.validation(event.target.value.length < 3, event);
+  }
+
+  validation(condicao: boolean, event:any){
+    let valid = false;
+    if(condicao){
+      event.target.classList.remove("is-valid");
+      event.target.classList.add("is-invalid");
+    }else{
+      event.target.classList.remove("is-invalid");
+      event.target.classList.add("is-valid");
+      valid = true;
+    }
+    return valid;
   }
 
 
