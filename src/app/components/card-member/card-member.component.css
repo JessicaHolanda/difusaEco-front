@@ -11,8 +11,8 @@
   font-size: 18px;
 }
 
-.card hover{
-background-color: yellow;
+.card:hover{
+top:-8px;
 }
 
 .icone-git {
@@ -55,4 +55,8 @@ background-color: yellow;
   .card {
     min-height: 306px ;
   }
+}
+
+.fab:hover {
+opacity: 50%;
 }

@@ -15,7 +15,7 @@
               incentivando o consumo consciente...</p>
           </div>
           <div class=" btn-container mt-5 d-flex justify-content-center">
-            <button type="button" class="btn " routerLink='/sobre-projeto'>Saiba mais</button>
+            <button type="button" class="btn btnHome" routerLink='/sobre-projeto'>Saiba mais</button>
           </div>
         </div>
       </div>
@@ -46,32 +46,21 @@
 
   <div class="container">
 
-    <app-product-carousel></app-product-carousel>
+    <app-owl-carousel></app-owl-carousel>
 
     <div class=" btn-container mt-5 d-flex justify-content-center">
-      <button type="button" class="btn ">Todos Produtos</button>
+      <button type="button" class="btn btnHome" routerLink='/produtos'>Todos Produtos</button>
 
     </div>
 
   </div>
 
-
   <!--/Card e carrossel-->
-  <!--Sobrenos-->
+
+  <!-- OwlCarousel - Sobre nós - Responsivo  -->
   <div *ngIf="gitUsersLoaded" class="container mb-5">
     <hr class="mb-5">
     <h4 class="text-center mb-5 title">Equipe</h4>
-
-
-    <div class="row">
-      <div class="col-md-4 col-lg col-6 mb-md-3 mb-lg-0 mb-3" *ngFor="let member of members">
-        <app-card-member [member]="member"></app-card-member>
-      </div>
-    </div>
-  </div>
-  <!--/Sobrenos-->
-
-  <!-- OwlCarousel - Sobre nós - Responsivo  -->
 
   <div class="container">
 
@@ -85,5 +74,7 @@
       </owl-carousel-o>
     
     </div>
+
+    <!--/Sobrenos-->
 
 </div>
