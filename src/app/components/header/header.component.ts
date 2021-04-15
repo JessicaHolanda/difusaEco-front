@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     this.getQtdCarrinho()
-    
+
   }
 
   getQtdCarrinho(){
@@ -37,11 +37,12 @@ export class HeaderComponent implements OnInit {
   }
 
   sair(){
+    // environment.nomeUsuario = ''
+    // environment.token = ''
+    // environment.id = 0
+    // environment.tipoUsuario = ''
+    this.authService.logoutLocalStorage();
     this.router.navigate(['/home'])
-    environment.nomeUsuario = ''
-    environment.token = ''
-    environment.id = 0
-    environment.tipoUsuario = ''
   }
 
 }

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     window.scroll(0,0)
     this.getAllUsuarios()
+    // this.authService.autoAuthUser();
   }
 
   confirmeSenha(event: any) {
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
 
   verificarLogin(){
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
-      console.log(resp)
+      console.log(resp);
     })
   }
 
@@ -69,10 +70,10 @@ export class LoginComponent implements OnInit {
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
       this.userLogin = resp
 
-      environment.token = this.userLogin.token
-      environment.nomeUsuario = this.userLogin.nomeUsuario
-      environment.id = this.userLogin.id
-      environment.tipoUsuario = this.userLogin.tipoUsuario
+      // environment.token = this.userLogin.token
+      // environment.nomeUsuario = this.userLogin.nomeUsuario
+      // environment.id = this.userLogin.id
+      // environment.tipoUsuario = this.userLogin.tipoUsuario
 
       $('#modalLogin').hide()
 
@@ -92,13 +93,17 @@ export class LoginComponent implements OnInit {
       // } else {
       //   this.router.navigate(['/adm'])
       // }
-      
+
+      console.log(this.userLogin)
+      this.authService.saveAuthData(this.userLogin)
+
+
 
     } , err => {
 
       if(err.status == 401) {
         alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
-     
+
    }
 
    if(err.status == 500) {

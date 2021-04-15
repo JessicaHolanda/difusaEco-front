@@ -37,13 +37,13 @@
           </div>
         </div>
 
-        <div class="btn-container" *ngIf='authService.deslogado()'>
+        <div class="btn-container" *ngIf='!authService.getAuthData()'>
           <div type="button" class="btn btn-success" data-toggle="modal" data-target="#modalLogin">
             Login
           </div>
         </div>
 
-        <div class="btn-container" *ngIf='authService.logado()'>
+        <div class="btn-container" *ngIf='authService.getAuthData()'>
           <a (click)='sair()' class="btn btnMore"><i class="fas fa-sign-out-alt"></i> Sair</a>
         </div>
 
@@ -64,7 +64,7 @@
                 <a class="dropdown-item" routerLink="/home"><i class="fas fa-home"></i> Início</a>
                 <a class="dropdown-item" routerLink='/carrinho'><i class="far fa-newspaper"></i> Carrinho</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item"><i class="far fa-edit"></i> Editar Perfil</a> 
+                <a class="dropdown-item"><i class="far fa-edit"></i> Editar Perfil</a>
                 <a (click)='sair()' class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Sair</a>
 
               </div>

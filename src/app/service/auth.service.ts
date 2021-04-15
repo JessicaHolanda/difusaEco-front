@@ -16,11 +16,11 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) { }
-  
+
   token = {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
-  
+
 
   logar(userLogin: UserLogin): Observable<UserLogin>{
     return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar',userLogin)
@@ -43,30 +43,27 @@ export class AuthService {
   }
 
   deleteUsuario(id: number){
-    
+
     return this.http.delete(`http://localhost:8080/usuarios/${id}`)
   }
 
-  logado() {
-    let ok = false
+  // logado() {
+  //   let ok = false
 
-    if (environment.token != '') {
-      ok = true
-    }
+  //   if (environment.token != '') {
+  //     ok = true
+  //   }
+  //   return ok
+  // }
 
-    return ok
-    
-  }
+  // deslogado() {
+  //   let ok = false
 
-  deslogado() {
-    let ok = false
-
-    if (environment.token == '') {
-      ok = true
-    }
-
-    return ok
-  }
+  //   if (environment.token == '') {
+  //     ok = true
+  //   }
+  //   return ok
+  // }
 
   adm() {
     let ok = false
@@ -75,7 +72,40 @@ export class AuthService {
       ok = true
     }
 
-    return ok 
+    return ok
   }
-  
+
+  /**
+        Funções relacionadas ao Local Storage
+   */
+
+  saveAuthData(usuario: UserLogin) {
+    const userAuth = usuario.token;
+    localStorage.setItem("userAuth", userAuth);
+  }
+
+
+  logoutLocalStorage() {
+    localStorage.removeItem("userAuth");
+  }
+
+
+
+  // autoAuthUser() {
+  //   const authInformation = this.getAuthData();
+  //   if (!authInformation) {
+  //    return;
+  //   }
+  //   const now = new Date();
+  // }
+
+
+
+  getAuthData() {
+    const userAuth = localStorage.getItem("userAuth");
+    if(!userAuth){
+      return false; //deslogado
+    }
+    return true; //logado
+  }
 }
