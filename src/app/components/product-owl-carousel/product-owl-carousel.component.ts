@@ -1,16 +1,16 @@
-import { Categoria } from './../../model/Categoria';
-import { CategoriaService } from './../../service/categoria.service';
-
-import { ProdutoService } from './../../service/produto.service';
-import { Produto } from './../../model/Produto';
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Categoria } from 'src/app/model/Categoria';
+import { Produto } from 'src/app/model/Produto';
+import { CategoriaService } from 'src/app/service/categoria.service';
+import { ProdutoService } from 'src/app/service/produto.service';
 
 @Component({
-  selector: 'app-product-carousel',
-  templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.css']
+  selector: 'app-product-owl-carousel',
+  templateUrl: './product-owl-carousel.component.html',
+  styleUrls: ['./product-owl-carousel.component.css']
 })
-export class ProductCarouselComponent implements OnInit {
+export class ProductOwlCarouselComponent implements OnInit {
 
   produto: Produto = new Produto()
   listaProdutos: Produto[]
@@ -60,5 +60,29 @@ export class ProductCarouselComponent implements OnInit {
    addToCart(produto: Produto) {
     this.produtoService.addToCart(produto);
   }
-  
+
+  // OwlCarousel - Produtos - Responsivo
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 600,
+    navText: ['&#8249', '&#8250;'],
+    responsive: {
+      0: {
+        items: 1 
+      },
+      400: {
+        items: 2
+      },
+      760: {
+        items: 3
+      }
+    },
+    nav: true
+  }
+
 }

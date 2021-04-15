@@ -14,23 +14,25 @@
 
                     <div class="modal-body">
                         <div class="form-group">
-                            <input [(ngModel)]='user.nomeUsuario' class="form-control" type="text" name="nome" id="nome"
-                                placeholder="Informe seu nome aqui">
+                            <input [(ngModel)]='user.nomeUsuario' (keyup)="validaNome($event)" class="form-control"
+                                type="text" name="nome" id="nome" placeholder="Informe seu nome aqui">
+                            <div class="invalid-tooltip">Digite um nome válido.</div>
+
                         </div>
 
                         <div class="form-group">
-                            <input [(ngModel)]='user.email' class="form-control" type="email" name="usuario" id="usuario"
-                                placeholder="Digite seu email. Exemplo: email@email.com">
+                            <input [(ngModel)]='user.email' class="form-control" type="email" name="usuario"
+                                id="usuario" placeholder="Digite seu email. Exemplo: email@email.com">
                         </div>
 
                         <div class="form-group">
-                            <input (input)='confirmeSenha($event)' class="form-control" type="password" name="senha" id="senha"
-                                placeholder="Digite sua senha">
+                            <input (input)='confirmeSenha($event)' class="form-control" type="password" name="senha"
+                                id="senha" placeholder="Digite sua senha">
                         </div>
 
                         <div class="form-group">
-                            <input [(ngModel)]='user.senha' class="form-control" type="password" name="senha" id="senhaConfirmar"
-                                placeholder="Confirme sua senha">
+                            <input [(ngModel)]='user.senha' class="form-control" type="password" name="senha"
+                                id="senhaConfirmar" placeholder="Confirme sua senha">
                         </div>
 
                     </div>
@@ -55,19 +57,21 @@
 
                         <form>
                             <div class="form-group">
-                                <input [(ngModel)]="userLogin.email" type="email" class="form-control" name="email" id="email" placeholder="Digite seu email">
+                                <input [(ngModel)]="userLogin.email" type="email" class="form-control" name="email"
+                                    id="email" placeholder="Digite seu email">
                             </div>
                             <div class="form-group">
-                                <input [(ngModel)]="userLogin.senha" type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha">
+                                <input [(ngModel)]="userLogin.senha" type="password" class="form-control" id="senha"
+                                    name="senha" placeholder="Digite sua senha">
                             </div>
                         </form>
                     </div>
 
-                        <div class="modal-footer">
+                    <div class="modal-footer">
 
-                            <button type="button" class="btn btn-primary entrar" (click)="logar()">Entrar</button>
+                        <button type="button" class="btn btn-primary entrar" (click)="logar()">Entrar</button>
 
-                        </div>
+                    </div>
 
                 </div>
 

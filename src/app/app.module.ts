@@ -12,19 +12,18 @@ import { CardMemberComponent } from './components/card-member/card-member.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdmComponent } from './pages/adm/adm.component';
-import { HeaderAdmComponent } from './components/header-adm/header-adm.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 import { ProdutoCarrinhoComponent } from './components/produto-carrinho/produto-carrinho.component';
-
-import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { ReciboComponent } from './pages/recibo/recibo.component';
-import { OwlCarouselComponent } from './components/owl-carousel/owl-carousel.component';
+
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ProductOwlCarouselComponent } from './components/product-owl-carousel/product-owl-carousel.component';
 
 
 @NgModule({
@@ -37,18 +36,14 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SobreProjetoComponent,
     CardMemberComponent,
     ProdutoCarrinhoComponent,
-
     AdmComponent,
-    HeaderAdmComponent,
     LoginComponent,
     CarrinhoComponent,
-
     AdmComponent,
-    HeaderAdmComponent,
     LoginComponent,
-    ProductCarouselComponent,
     ReciboComponent,
-    OwlCarouselComponent,
+    ProductOwlCarouselComponent
+
   ],
   imports: [
     BrowserModule,
