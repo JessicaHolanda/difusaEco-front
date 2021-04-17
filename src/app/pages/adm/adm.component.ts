@@ -24,6 +24,7 @@ export class AdmComponent implements OnInit {
   ativo: boolean = false
   categoriaSelecionada: Categoria = new Categoria()
   idCategoria: number
+  nomeCategoria: string
 
   produto: Produto = new Produto()
   listaProdutos: Produto[]
@@ -85,6 +86,20 @@ export class AdmComponent implements OnInit {
     this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
     this.categoria = resp
   })
+  }
+
+  findCategoriaByNome()
+  {
+    if(this.nomeCategoria == '')
+    {
+      this.getAllCategorias()
+    }
+    else
+    {
+      this.categoriaService.getByNomeCategoria(this.nomeCategoria).subscribe((resp: Categoria[]) => {
+        this.listaCategorias = resp;
+      })
+    }
   }
 
   selecionarCategoria(id: number){
