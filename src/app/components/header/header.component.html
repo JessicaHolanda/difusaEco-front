@@ -21,7 +21,7 @@
           <a class="nav-link" routerLink='/sobre-projeto'>Sobre o Projeto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink='/adm' *ngIf='authService.adm()'>Administrador</a>
+          <a class="nav-link" routerLink='/adm' *ngIf='authService.usuarioAdm()'>Administrador</a>
         </li>
       </ul>
 
@@ -43,9 +43,13 @@
           </div>
         </div>
 
-        <div class="btn-container" *ngIf='authService.getAuthData()'>
+        <div class="usuario-logado-container d-flex" *ngIf='authService.getAuthData()'>
+        <div class="btn-container" ></div>
+          <div class="text usuario-logado-text">
+            Olá, {{authService.getUsuarioLogado().nomeUsuario}}!
+          </div>
           <a (click)='sair()' class="btn btnMore"><i class="fas fa-sign-out-alt"></i> Sair</a>
-        </div>
+      </div>
 
         <!-- Implementação futura -->
         <!-- <div class="collapse navbar-collapse" id="conteudoNavbarSuportado" *ngIf='authService.logado()'>

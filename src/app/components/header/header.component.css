@@ -49,3 +49,10 @@
 .nav-item {
   margin: 0 10px;
 }
+
+.usuario-logado-text {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-right: 1rem;
+}

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NumberValueAccessor } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
@@ -80,8 +81,10 @@ export class AuthService {
    */
 
   saveAuthData(usuario: UserLogin) {
-    const userAuth = usuario.token;
-    localStorage.setItem("userAuth", userAuth);
+    const userAuth: UserLogin = usuario;
+    //const userAuth = usuario.token;
+    //localStorage.setItem("userAuth", userAuth);
+    localStorage.setItem("userAuth", JSON.stringify(userAuth));
   }
 
 
@@ -89,17 +92,13 @@ export class AuthService {
     localStorage.removeItem("userAuth");
   }
 
+  getUsuarioLogado() {
+    let usuarioString = localStorage.getItem('userAuth');
 
+    let usuarioLogado: UserLogin = JSON.parse(usuarioString || '');
 
-  // autoAuthUser() {
-  //   const authInformation = this.getAuthData();
-  //   if (!authInformation) {
-  //    return;
-  //   }
-  //   const now = new Date();
-  // }
-
-
+    return usuarioLogado;
+  }
 
   getAuthData() {
     const userAuth = localStorage.getItem("userAuth");
@@ -108,4 +107,15 @@ export class AuthService {
     }
     return true; //logado
   }
+
+  usuarioAdm() {
+    let verificaTipoUsuario = this.getUsuarioLogado();
+
+    if (verificaTipoUsuario.tipoUsuario == 'adm'){
+      return true;
+    }
+    return false;
+  }
+
+
 }

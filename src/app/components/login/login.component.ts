@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
         alert("Cadastro realizado com sucesso. Bem vinde! Realize login.")
       })
     }
-
   }
 
   getAllUsuarios() {
@@ -94,10 +93,7 @@ export class LoginComponent implements OnInit {
       //   this.router.navigate(['/adm'])
       // }
 
-      console.log(this.userLogin)
       this.authService.saveAuthData(this.userLogin)
-
-
 
     } , err => {
 
@@ -109,7 +105,6 @@ export class LoginComponent implements OnInit {
    if(err.status == 500) {
     alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
   }
-
     })
   }
 
