@@ -20,8 +20,10 @@ export class LoginComponent implements OnInit {
   tipoUsuario: string = "normal"
   userLogin: UserLogin = new UserLogin
 
-  // Validação de Campos
-  nomeValido: boolean = false
+  // Confirmação de Dados
+  nomeValido: boolean = false;
+  emailValido: boolean = false;
+  senhaValida: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -30,25 +32,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0,0)
-    this.getAllUsuarios()
-  }
-
-  confirmeSenha(event: any) {
-    this.confirmarSenha = event.target.value
-  }
-
-  cadastrar() {
-    this.user.tipoUsuario = this.tipoUsuario
-
-    if (this.user.senha != this.confirmarSenha) {
-      alert("Senhas não conferem. Favor digitar novamente.")
-    } else {
-      this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
-        this.user = resp
-        alert("Cadastro realizado com sucesso. Bem vinde! Realize login.")
-      })
-    }
-
   }
 
   getAllUsuarios() {
@@ -79,20 +62,7 @@ export class LoginComponent implements OnInit {
       $('#modalLogin').hide()
 
       $('.modal-backdrop').hide()
-      alert("Welcome!")
-
-
-      // if(this.userLogin.tipoUsuario == "normal"){
-      //   $('#modalLogin').hide()
-
-      // $('#modalLogin').hide()
-
-      // $('.modal-backdrop').hide()
-      // alert("Welcome!")
-      // } else {
-      //   this.router.navigate(['/adm'])
-      // }
-      
+      alert("Welcome!")      
 
     } , err => {
 
@@ -108,8 +78,23 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  // Validação de Dados
+
   validaNome(event: any){
     this.nomeValido = this.validation(event.target.value.length < 3, event);
+  }
+
+  validaEmail(event: any){
+    this.emailValido = this.validation(event.target.value.indexOf('@') == -1 || event.target.value.indexOf('.') == -1, event);
+  }
+
+  validaSenha(event: any){
+    this.senhaValida = this.validation(event.target.value.length < 5, event)
+  }
+
+  confirmSenha(event: any){
+    this.confirmarSenha = event.target.value;
+     this.senhaValida = this.validation(this.confirmarSenha != this.user.senha, event)
   }
 
   validation(condicao: boolean, event:any){
@@ -123,6 +108,23 @@ export class LoginComponent implements OnInit {
       valid = true;
     }
     return valid;
+  }
+
+  cadastrar() {
+    this.user.tipoUsuario = this.tipoUsuario;
+
+    if (this.user.senha != this.confirmarSenha) {
+
+      this.confirmSenha;
+      
+      alert("Por favor, verifique novamente as senhas digitadas.")
+    } else if (this.nomeValido && this.emailValido && this.senhaValida) {
+      this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
+        this.user = resp
+        alert("Cadastro realizado com sucesso. Bem vinde! Realize login.")
+      })
+    }
+
   }
 
 
