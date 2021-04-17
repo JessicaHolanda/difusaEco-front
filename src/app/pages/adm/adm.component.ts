@@ -24,6 +24,8 @@ export class AdmComponent implements OnInit {
   ativo: boolean = false
   categoriaSelecionada: Categoria = new Categoria()
   idCategoria: number
+  idCategoriaProduto: number
+
   nomeCategoria: string
 
   produto: Produto = new Produto()
@@ -44,12 +46,9 @@ export class AdmComponent implements OnInit {
     private produtoService: ProdutoService,
     private authService: AuthService,
     private route: ActivatedRoute
-
-
   ) { }
 
   ngOnInit() {
-
     let id = this.route.snapshot.params['id']
 
     this.getAllCategorias()
@@ -60,19 +59,36 @@ export class AdmComponent implements OnInit {
 
 
   /* FUNÇÕES CATEGORIA INICIO */
-  cadastrarCategoria(){
 
+  cadastrarCategoria(){
     this.categoria.ativo = this.ativo
-    this.categoriaService.postCategoria(this.categoria).subscribe((resp: Categoria)=>{
+    this.categoriaService.postCategoria(this.categoria).subscribe((resp: Categoria) => {
       this.categoria = resp
+      this.getAllCategorias()
       Swal.fire(
         'Cadastrado',
         'Sua categoria foi cadastrada com sucesso',
         'success'
       )
       this.categoria = new Categoria()
-      this.getAllCategorias()
+    }, err => {
+      if (err.status == 401 || err.status == 400) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ocorreu algum erro',
+          footer: 'Verifique as informações novamente'
         })
+      }
+      if (err.status == 500) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ocorreu algum erro',
+          footer: 'Verifique as informações novamente'
+        })
+      }
+    })
   }
 
   getAllCategorias(){
@@ -82,34 +98,30 @@ export class AdmComponent implements OnInit {
     })
   }
 
-  findByIdCategoria(){
-    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
-    this.categoria = resp
-  })
+  findByIdCategoria() {
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria) => {
+      this.categoria = resp
+    })
   }
 
-  findCategoriaByNome()
-  {
-    if(this.nomeCategoria == '')
-    {
+  selecionarCategoria(id: number) {
+    this.categoriaService.getByIdCategoria(id).subscribe((resp: Categoria) => {
+      this.categoriaSelecionada = resp
+    })
+  }
+
+  findCategoriaByNome(){
+    if(this.nomeCategoria == ''){
       this.getAllCategorias()
     }
-    else
-    {
+    else{
       this.categoriaService.getByNomeCategoria(this.nomeCategoria).subscribe((resp: Categoria[]) => {
         this.listaCategorias = resp;
       })
     }
   }
 
-  selecionarCategoria(id: number){
-    this.categoriaService.getByIdCategoria(id).subscribe((resp: Categoria)=>{
-    this.categoriaSelecionada = resp
-  })
-    console.log(this.categoriaSelecionada)
-  }
-
-  editarCategoria(){
+  editarCategoria() {
     Swal.fire({
       title: 'Você tem certeza que deseja editar essa Categoria?',
       text: "",
@@ -118,13 +130,31 @@ export class AdmComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
-      cancelButtonText:'Não'
+      cancelButtonText: 'Não'
     }).then((result) => {
       if (result.isConfirmed) {
-      this.categoriaService.putCategoria(this.categoriaSelecionada).subscribe((resp: Categoria)=>{
-      this.categoriaSelecionada = resp
-      this.getAllCategorias()
-      })
+        this.categoriaService.putCategoria(this.categoriaSelecionada).subscribe((resp: Categoria) => {
+          this.categoriaSelecionada = resp
+          this.getAllCategorias()
+          this.getAllProdutos()
+        }, err => {
+          if (err.status == 401) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu algum erro',
+              footer: 'Verifique as informações novamente'
+            })
+          }
+          if (err.status == 500) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu algum erro',
+              footer: 'Verifique as informações novamente'
+            })
+          }
+        })
         Swal.fire(
           'Editado',
           'O usuário foi Editado',
@@ -134,8 +164,9 @@ export class AdmComponent implements OnInit {
     })
   }
 
-  cancelCategoria(){
+  cancelCategoria() {
     this.categoria = new Categoria()
+    this.produto = new Produto()
   }
 
   apagarCategoria(id: number){
@@ -158,26 +189,26 @@ export class AdmComponent implements OnInit {
             'Deletado',
             'A categoria foi deletada',
             'success'
-           )
-         }
-
-       })
-
+          )
+        }
+      })
      }catch(error){
       console.log(error.message)
-     }
-
+    }
   }
   /* FUNÇÕES CATEGORIA FIM */
 
 
 
   /* FUNÇÕES PRODUTO INICIO */
-  cadastrarProduto(){
+  cadastrarProduto() {
     this.categoria.id = this.idCategoria
     this.produto.categoria = this.categoria
-    this.produtoService.postProduto(this.produto).subscribe((resp: Produto)=>{
+    this.produtoService.postProduto(this.produto).subscribe((resp: Produto) => {
       this.produto = resp
+      this.produto.preco = parseInt(this.produto.preco.toString().replace(".", ","))
+      console.log(this.produto.preco)
+      console.log(this.produto.preco.toString().replace(".", ","))
       Swal.fire(
         'Cadastrado',
         'Sua produto foi cadastrado com sucesso',
@@ -185,8 +216,30 @@ export class AdmComponent implements OnInit {
       )
       this.produto = new Produto()
       this.getAllProdutos()
-      })
+    }, err => {
+
+      if (err.status == 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ocorreu algum erro',
+          footer: 'Verifique as informações novamente'
+        })
+
+      }
+
+      if (err.status == 500) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ocorreu algum erro',
+          footer: 'Verifique as informações novamente'
+        })
+      }
+    })
   }
+
+
 
   getAllProdutos(){
     this.produtoService.getAllProduto().subscribe((resp: Produto[])=>{
@@ -194,14 +247,11 @@ export class AdmComponent implements OnInit {
     })
   }
 
-  findProdutoByNome()
-  {
-    if(this.nomeProduto == '')
-    {
+  findProdutoByNome(){
+    if(this.nomeProduto == ''){
       this.getAllProdutos()
     }
-    else
-    {
+    else{
       this.produtoService.getByNomeProduto(this.nomeProduto).subscribe((resp: Produto[]) => {
         this.listaProdutos = resp;
       })
@@ -215,7 +265,7 @@ export class AdmComponent implements OnInit {
     })
   }
 
-  editarProduto(){
+  editarProduto() {
     this.categoria.id = this.idCategoria
     this.produtoSelecionado.categoria = this.categoria
     Swal.fire({
@@ -226,13 +276,32 @@ export class AdmComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
-      cancelButtonText:'Não'
+      cancelButtonText: 'Não'
     }).then((result) => {
       if (result.isConfirmed) {
-      this.produtoService.putProduto(this.produtoSelecionado).subscribe((resp: Produto)=>{
-      this.produtoSelecionado = resp
-      this.getAllProdutos()
-      })
+        this.produtoService.putProduto(this.produtoSelecionado).subscribe((resp: Produto) => {
+          this.produtoSelecionado = resp
+          this.getAllProdutos()
+          this.getAllCategorias()
+        }, err => {
+          if (err.status == 401) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu algum erro',
+              footer: 'Verifique as informações novamente'
+            })
+          }
+
+          if (err.status == 500) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu algum erro',
+              footer: 'Verifique as informações novamente'
+            })
+          }
+        })
         Swal.fire(
           'Editado',
           'O usuário foi Editado',
@@ -242,39 +311,38 @@ export class AdmComponent implements OnInit {
     })
   }
 
-  cancelProduto(){
+  cancelProduto() {
     this.produto = new Produto()
+    this.categoria = new Categoria()
+
   }
 
-  apagarProduto(id: number){
-    try{
+  apagarProduto(id: number) {
+    try {
       Swal.fire({
-         title: 'Você tem certeza que deseja apagar esse produto?',
-         text: "Você não poderá reverter isto",
-         icon: 'warning',
-         showCancelButton: true,
-         confirmButtonColor: '#3085d6',
-         cancelButtonColor: '#d33',
-         confirmButtonText: 'Sim',
-         cancelButtonText:'Não'
-       }).then((result) => {
-         if (result.isConfirmed) {
-           this.produtoService.deleteProduto(id).subscribe(()=>{
+        title: 'Você tem certeza que deseja apagar esse produto?',
+        text: "Você não poderá reverter isto",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.produtoService.deleteProduto(id).subscribe(() => {
             this.getAllProdutos()
-           })
-
-           Swal.fire(
-             'Deletado',
-             'O Produto foi deletado',
-             'success'
-           )
-         }
-
-
-       })
-     }catch(error){
-       console.log(error.message)
-     }
+          })
+          Swal.fire(
+            'Deletado',
+            'O Produto foi deletado',
+            'success'
+          )
+        }
+      })
+    } catch (error) {
+      console.log(error.message)
+    }     
   }
   /* FUNÇÕES PRODUTO FIM */
 
@@ -282,8 +350,10 @@ export class AdmComponent implements OnInit {
 
   /* FUNÇÕES USUARIO INICIO*/
 
-  cadastrarUsuario(){
 
+  
+
+  cadastrarUsuario(){
     this.authService.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
       this.usuario = resp
       Swal.fire(
@@ -293,22 +363,40 @@ export class AdmComponent implements OnInit {
       )
       this.usuario = new Usuario()
       this.getAllUsuarios()
+    }
+      , err => {
+        if (err.status == 401 || err.status == 400) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ocorreu algum erro',
+            footer: 'Verifique as informações novamente'
+          })
+        }
+        if (err.status == 500) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ocorreu algum erro',
+            footer: 'Verifique as informações novamente'
+          })
+        }
       })
   }
 
-  getAllUsuarios(){
-    this.authService.getAllUsuarios().subscribe((resp: Usuario[])=>{
+  getAllUsuarios() {
+    this.authService.getAllUsuarios().subscribe((resp: Usuario[]) => {
       this.listaUsuarios = resp
     })
   }
 
-  selecionarUsuario(id: number){
-    this.authService.findByIdUsuario(id).subscribe((resp: Usuario)=>{
+  selecionarUsuario(id: number) {
+    this.authService.findByIdUsuario(id).subscribe((resp: Usuario) => {
       this.usuarioSelecionado = resp
     })
   }
 
-  async editarUsuario(){
+  async editarUsuario() {
     await Swal.fire({
       title: 'Você tem certeza que deseja editar esse usuário?',
       text: "",
@@ -317,9 +405,32 @@ export class AdmComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
-      cancelButtonText:'Não'
+      cancelButtonText: 'Não'
     }).then((result) => {
       if (result.isConfirmed) {
+        this.authService.editarUsuario(this.usuarioSelecionado).subscribe((resp: Usuario) => {
+          this.usuarioSelecionado = resp
+          this.getAllUsuarios()
+          this.usuario = new Usuario
+        }, err => {
+          if (err.status == 401) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu algum erro',
+              footer: 'Verifique as informações novamente'
+            })
+          }
+          if (err.status == 500) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu algum erro',
+              footer: 'Verifique as informações novamente'
+            })
+          }
+        })
+
       this.authService.editarUsuario(this.usuarioSelecionado).subscribe((resp: Usuario)=>{
       this.usuarioSelecionado = resp
       this.getAllUsuarios()
@@ -330,19 +441,17 @@ export class AdmComponent implements OnInit {
           'O usuário foi Editado',
           'success'
         )
-
       }
-
     })
   }
 
-  cancelUsuario(){
+  cancelUsuario() {
     this.usuario = new Usuario
   }
 
-  async apagarUsuario(id: number){
-    try{
-     await Swal.fire({
+  async apagarUsuario(id: number) {
+    try {
+      await Swal.fire({
         title: 'Você tem certeza que deseja apagar esse usuário?',
         text: "Você não poderá reverter isto",
         icon: 'warning',
@@ -350,10 +459,10 @@ export class AdmComponent implements OnInit {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sim',
-        cancelButtonText:'Não'
+        cancelButtonText: 'Não'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.authService.deleteUsuario(id).subscribe(()=>{
+          this.authService.deleteUsuario(id).subscribe(() => {
             this.usuario = new Usuario()
             this.getAllUsuarios()
           })
@@ -363,18 +472,38 @@ export class AdmComponent implements OnInit {
             'success'
           )
         }
-
       })
-
     }catch(error){
       console.log(error.message)
     }
-
   }
 
   confirmeSenha(event: any) {
     this.confirmarSenha = event.target.value
   }
-}
   /* FUNÇÕES USUARIO FIM*/
+
+
+  /* Valicações*/
+
+  validateTextLength(event: any, n: number) {
+    return this.validation(event.target.value.length < n, event);
+  }
+
+
+  validation(condicao: boolean, event: any) {
+    let valid = false;
+    if (condicao) {
+      event.target.classList.remove("is-valid");
+      event.target.classList.add("is-invalid");
+    } else {
+      event.target.classList.remove("is-invalid");
+      event.target.classList.add("is-valid");
+      valid = true;
+    }
+    return valid;
+  }
+
+}
+
 
