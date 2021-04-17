@@ -19,7 +19,7 @@ export class AuthService {
   ) { }
 
   token = {
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', this.getUsuarioLogado().token)
   }
 
 
@@ -94,9 +94,11 @@ export class AuthService {
 
   getUsuarioLogado() {
     let usuarioString = localStorage.getItem('userAuth');
-
-    let usuarioLogado: UserLogin = JSON.parse(usuarioString || '');
-
+    let usuarioLogado: UserLogin = new UserLogin();
+    if(usuarioString) {
+      console.log(usuarioString);
+      usuarioLogado = JSON.parse(usuarioString || '');
+    }
     return usuarioLogado;
   }
 
@@ -110,12 +112,14 @@ export class AuthService {
 
   usuarioAdm() {
     let verificaTipoUsuario = this.getUsuarioLogado();
+    let ok = false;
 
-    if (verificaTipoUsuario.tipoUsuario == 'adm'){
-      return true;
+    if (this.getAuthData()) {
+      if (verificaTipoUsuario.tipoUsuario == 'adm'){
+        ok = true
+      }
     }
-    return false;
+    return ok;
   }
-
 
 }
