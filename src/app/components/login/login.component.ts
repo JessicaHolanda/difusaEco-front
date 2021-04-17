@@ -73,12 +73,13 @@ export class LoginComponent implements OnInit {
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
       environment.tipoUsuario = this.userLogin.tipoUsuario
+      $(".close").trigger('click')
+      //$('#modalLogin').hide()
 
-      $('#modalLogin').hide()
+     // $('#modalLogin').hide()
 
-      $('#modalLogin').hide()
-
-      $('.modal-backdrop').hide()
+     // $('.modal-backdrop').hide()
+     
       alert("Welcome!")
 
 
