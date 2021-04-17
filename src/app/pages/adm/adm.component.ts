@@ -26,9 +26,12 @@ export class AdmComponent implements OnInit {
   idCategoria: number
   idCategoriaProduto: number
 
+  nomeCategoria: string
+
   produto: Produto = new Produto()
   listaProdutos: Produto[]
   produtoSelecionado: Produto = new Produto()
+  nomeProduto: string
 
   usuario: Usuario = new Usuario
   listaUsuarios: Usuario[]
@@ -42,14 +45,10 @@ export class AdmComponent implements OnInit {
     private categoriaService: CategoriaService,
     private produtoService: ProdutoService,
     private authService: AuthService,
-    private route: ActivatedRoute,
-
-
-
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-
     let id = this.route.snapshot.params['id']
 
     this.getAllCategorias()
@@ -60,7 +59,8 @@ export class AdmComponent implements OnInit {
 
 
   /* FUNÇÕES CATEGORIA INICIO */
-  cadastrarCategoria() {
+
+  cadastrarCategoria(){
     this.categoria.ativo = this.ativo
     this.categoriaService.postCategoria(this.categoria).subscribe((resp: Categoria) => {
       this.categoria = resp
@@ -91,9 +91,8 @@ export class AdmComponent implements OnInit {
     })
   }
 
-
-  getAllCategorias() {
-    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[]) => {
+  getAllCategorias(){
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
       this.listaCategorias = resp
       console.log(this.listaCategorias)
     })
@@ -109,7 +108,17 @@ export class AdmComponent implements OnInit {
     this.categoriaService.getByIdCategoria(id).subscribe((resp: Categoria) => {
       this.categoriaSelecionada = resp
     })
-    console.log(this.categoriaSelecionada)
+  }
+
+  findCategoriaByNome(){
+    if(this.nomeCategoria == ''){
+      this.getAllCategorias()
+    }
+    else{
+      this.categoriaService.getByNomeCategoria(this.nomeCategoria).subscribe((resp: Categoria[]) => {
+        this.listaCategorias = resp;
+      })
+    }
   }
 
   editarCategoria() {
@@ -160,21 +169,21 @@ export class AdmComponent implements OnInit {
     this.produto = new Produto()
   }
 
-  apagarCategoria(id: number) {
-    try {
-      Swal.fire({
-        title: 'Você tem certeza que deseja apagar essa categoria?',
-        text: "Você não poderá reverter isto",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim',
-        cancelButtonText: 'Não'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.categoriaService.deleteCategoria(id).subscribe(() => {
-            this.getAllCategorias()
+  apagarCategoria(id: number){
+    try{
+       Swal.fire({
+         title: 'Você tem certeza que deseja apagar essa categoria?',
+         text: "Você não poderá reverter isto",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Sim',
+         cancelButtonText:'Não'
+       }).then((result) => {
+         if (result.isConfirmed) {
+          this.categoriaService.deleteCategoria(id).subscribe(()=>{
+           this.getAllCategorias()
           })
           Swal.fire(
             'Deletado',
@@ -183,7 +192,7 @@ export class AdmComponent implements OnInit {
           )
         }
       })
-    } catch (error) {
+     }catch(error){
       console.log(error.message)
     }
   }
@@ -230,14 +239,28 @@ export class AdmComponent implements OnInit {
     })
   }
 
-  getAllProdutos() {
-    this.produtoService.getAllProduto().subscribe((resp: Produto[]) => {
+
+
+  getAllProdutos(){
+    this.produtoService.getAllProduto().subscribe((resp: Produto[])=>{
       this.listaProdutos = resp
     })
   }
 
-  selecionarProduto(id: number) {
-    this.produtoService.getByIdProduto(id).subscribe((resp: Produto) => {
+  findProdutoByNome(){
+    if(this.nomeProduto == ''){
+      this.getAllProdutos()
+    }
+    else{
+      this.produtoService.getByNomeProduto(this.nomeProduto).subscribe((resp: Produto[]) => {
+        this.listaProdutos = resp;
+      })
+    }
+  }
+
+  selecionarProduto(id: number){
+
+    this.produtoService.getByIdProduto(id).subscribe((resp: Produto)=>{
       this.produtoSelecionado = resp
     })
   }
@@ -319,7 +342,7 @@ export class AdmComponent implements OnInit {
       })
     } catch (error) {
       console.log(error.message)
-    }
+    }     
   }
   /* FUNÇÕES PRODUTO FIM */
 
@@ -327,8 +350,11 @@ export class AdmComponent implements OnInit {
 
   /* FUNÇÕES USUARIO INICIO*/
 
-  cadastrarUsuario() {
-    this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
+
+  
+
+  cadastrarUsuario(){
+    this.authService.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
       this.usuario = resp
       Swal.fire(
         'Cadastrado',
@@ -404,6 +430,12 @@ export class AdmComponent implements OnInit {
             })
           }
         })
+
+      this.authService.editarUsuario(this.usuarioSelecionado).subscribe((resp: Usuario)=>{
+      this.usuarioSelecionado = resp
+      this.getAllUsuarios()
+      this.usuario = new Usuario
+      })
         Swal.fire(
           'Editado',
           'O usuário foi Editado',
@@ -441,7 +473,7 @@ export class AdmComponent implements OnInit {
           )
         }
       })
-    } catch (error) {
+    }catch(error){
       console.log(error.message)
     }
   }

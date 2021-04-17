@@ -10,28 +10,44 @@
 	<div class="row my-5 mb-5">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs " id="myTab" role="tablist">
+
 				<li class="nav-item">
 					<a class="nav-link active text-black-50 font-weight-bold" id="home-tab" data-toggle="tab"
 						href="#home" role="tab" aria-controls="home" aria-selected="true">Produtos</a>
 				</li>
+
 				<li class="nav-item">
 					<a class="nav-link text-black-50 ml-4 font-weight-bold" id="profile-tab" data-toggle="tab"
 						href="#perfil" role="tab" aria-controls="profile" aria-selected="false">Categorias</a>
 				</li>
+
 				<li class="nav-item">
 					<a class="nav-link text-black-50 ml-4 font-weight-bold" id="contact-tab" data-toggle="tab"
 						href="#contato" role="tab" aria-controls="contact" aria-selected="false">Usuarios</a>
 				</li>
+
 			</ul>
 			<div class="tab-content bg-white p-3 mb-5" id="myTabContent" style="overflow-x: scroll;">
 				<div class="tab-pane fade show active th" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<div class="text-center mt-2 mb-3 w-100">
 
+					<div class="text-center mt-2 mb-3 w-100">
 						<button type="button" class="btn" data-toggle="modal" data-target="#ModalProduto">
 							Novo produto
 						</button>
 					</div>
+
+					<div class="row d-flex justify-content-center mt-5 mb-5">
+						<div class="col-md-4">
+							<div class="form-group">
+								<input type="text" class="form-control" id="produto"
+									placeholder="Pesquise por nome de produto" [(ngModel)]="nomeProduto"
+									(keyup)='findProdutoByNome()'>
+							</div>
+						</div>
+					</div>
+
 					<table class="table table-sm th2">
+
 						<thead>
 							<tr class="text-center">
 								<th scope="col">#</th>
@@ -44,6 +60,7 @@
 								<th scope="col">Ação</th>
 							</tr>
 						</thead>
+
 						<tbody>
 							<tr class="text-center" *ngFor="let item of listaProdutos">
 								<td>{{item.id}}</td>
@@ -68,11 +85,22 @@
 						</tbody>
 					</table>
 				</div>
+
 				<div class="tab-pane fade th mb-5" id="perfil" role="tabpanel" aria-labelledby="profile-tab">
+
 					<button type="button" class="  btn btn-light text-black-50 mt-50 mt-3 mb-3" data-toggle="modal"
 						data-target="#ModalCategoria">
 						Nova categoria
 					</button>
+
+					<div class="row d-flex justify-content-center mt-5 mb-5">
+						<div class="form-group">
+							<input type="text" class="form-control" id="categoria"
+								placeholder="Pesquise por nome da categoria" [(ngModel)]="nomeCategoria"
+								(keyup)='findCategoriaByNome()'>
+						</div>
+					</div>
+
 					<table class="table table-sm">
 						<thead>
 							<tr class="text-center">
@@ -100,6 +128,7 @@
 						</tbody>
 					</table>
 				</div>
+
 				<div class="tab-pane fade th" id="contato" role="tabpanel" aria-labelledby="contact-tab">
 					<button type="button" class="  btn btn-light text-black-50 mb-3 mt-3" aling="center"
 						data-toggle="modal" data-target="#ModalUsuario">
@@ -140,9 +169,9 @@
 			</div>
 		</div>
 
-		
+
 		<!-- Modal CADASTRAR produto-->
-		<div class="modal fade "  id="ModalProduto" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+		<div class="modal fade " id="ModalProduto" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
 			aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -157,13 +186,14 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Produto</label>
 								<input [(ngModel)]="produto.nomeProduto" type="text" class="form-control"
-									name="nomeProduto" id="nomeProduto" placeholder="Digite o Nome" (keyup)="validateTextLength($event,2)" required>
+									name="nomeProduto" id="nomeProduto" placeholder="Digite o Nome"
+									(keyup)="validateTextLength($event,2)" required>
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Categoria</label>
 								<select [(ngModel)]="idCategoria" (change)='findByIdCategoria()' name="produtoCategoria"
-									id="produtoCategoria" class="form-control">								
-									<option *ngFor="let item of listaCategorias" [value]="item.id" >
+									id="produtoCategoria" class="form-control">
+									<option *ngFor="let item of listaCategorias" [value]="item.id">
 										{{item.nomeCategoria}}
 									</option>
 								</select>
@@ -176,16 +206,19 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput4">Preço</label>
 								<input [(ngModel)]="produto.preco" type="text" class="form-control" name="precoProduto"
-									id="precoProduto" placeholder="Digite o preço" mask="separator.2 " thousandSeparator=".">
+									id="precoProduto" placeholder="Digite o preço" mask="separator.2 "
+									thousandSeparator=".">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput5">Imagem</label>
 								<input [(ngModel)]="produto.imagem" type="text" class="form-control"
-									name="imagemProduto" id="imagemProduto" placeholder="Imagem inicial" >
+									name="imagemProduto" id="imagemProduto" placeholder="Imagem inicial">
 							</div>
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Descrição do produto</label>
-								<textarea [(ngModel)]="produto.descricao" class="form-control" name="textoProduto"id="textoProduto" rows="3" (keyup)="validateTextLength($event,10)" required></textarea>
+								<textarea [(ngModel)]="produto.descricao" class="form-control" name="textoProduto"
+									id="textoProduto" rows="3" (keyup)="validateTextLength($event,10)"
+									required></textarea>
 							</div>
 						</form>
 					</div>
@@ -196,7 +229,7 @@
 						<button (click)="cadastrarProduto()" type="button" class="btn btn-success"
 							data-dismiss="modal">Cadastrar produto
 						</button>
-					
+
 					</div>
 				</div>
 			</div>
@@ -218,7 +251,8 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Produto</label>
 								<input [(ngModel)]="produtoSelecionado.nomeProduto" type="text" class="form-control"
-									name="nomeEditarProduto" id="nomeEditarProduto" placeholder="Digite o Nome" (keyup)="validateTextLength($event,2)" >
+									name="nomeEditarProduto" id="nomeEditarProduto" placeholder="Digite o Nome"
+									(keyup)="validateTextLength($event,2)">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Categoria</label>
@@ -237,7 +271,8 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput4">Preço</label>
 								<input [(ngModel)]="produtoSelecionado.preco" type="text" class="form-control"
-									name="editarPreco" id="editarPreco" placeholder="Digite o preço" mask="separator.2 " thousandSeparator=".">
+									name="editarPreco" id="editarPreco" placeholder="Digite o preço" mask="separator.2 "
+									thousandSeparator=".">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput5">Imagem</label>
@@ -247,7 +282,8 @@
 							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Descrição do produto</label>
 								<textarea [(ngModel)]="produtoSelecionado.descricao" class="form-control"
-									name="editarDescricao" id="editarDescricao" rows="3" (keyup)="validateTextLength($event,10)"></textarea>
+									name="editarDescricao" id="editarDescricao" rows="3"
+									(keyup)="validateTextLength($event,10)"></textarea>
 							</div>
 						</form>
 					</div>
@@ -278,7 +314,8 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome da Categoria</label>
 								<input [(ngModel)]="categoria.nomeCategoria" type="text" name="nomeCategoria"
-									class="form-control" id="nomeCategoria" placeholder="Digite a categoria" (keyup)="validateTextLength($event,2)">
+									class="form-control" id="nomeCategoria" placeholder="Digite a categoria"
+									(keyup)="validateTextLength($event,2)">
 							</div>
 						</form>
 					</div>
@@ -340,7 +377,8 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Usuario</label>
 								<input [(ngModel)]="usuario.nomeUsuario" type="text" class="form-control"
-									name="nomeUsuario" id="nomeUsuario" placeholder="Digite o Nome" (keyup)="validateTextLength($event,3)">
+									name="nomeUsuario" id="nomeUsuario" placeholder="Digite o Nome"
+									(keyup)="validateTextLength($event,3)">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Email</label>
@@ -398,7 +436,8 @@
 							<div class="form-group">
 								<label for="formGroupExampleInput">Nome do Usuario</label>
 								<input [(ngModel)]="usuarioSelecionado.nomeUsuario" type="text" class="form-control"
-									name="nomeUsuarioEditar" id="nomeUsuarioEditar" placeholder="Digite o Nome"(keyup)="validateTextLength($event,3)">
+									name="nomeUsuarioEditar" id="nomeUsuarioEditar" placeholder="Digite o Nome"
+									(keyup)="validateTextLength($event,3)">
 							</div>
 							<div class="form-group">
 								<label for="formGroupExampleInput2">Email</label>
@@ -438,5 +477,3 @@
 				</div>
 			</div>
 		</div>
-
-	

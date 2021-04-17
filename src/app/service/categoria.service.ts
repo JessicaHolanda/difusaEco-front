@@ -25,10 +25,10 @@ export class CategoriaService {
     return this.http.get<Categoria>(`http://localhost:8080/categoria/${id}`)
   }
 
-  getByNomeCategoria(nomeCategoria: string): Observable<Categoria>{
-    return this.http.get<Categoria>(`http://localhost:8080/categoria/${nomeCategoria}`)
+  getByNomeCategoria(nomeCategoria: string): Observable<Categoria[]>{
+    return this.http.get<Categoria[]>(`http://localhost:8080/categoria/categoria/${nomeCategoria}`)
   }
-  
+
   postCategoria(categoria: Categoria): Observable<Categoria> {
     return this.http.post<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': environment.token}})
   }
@@ -38,9 +38,9 @@ export class CategoriaService {
   }
 
   deleteCategoria(id: number) {
-    return this.http.delete(`http://localhost:8080/categoria/${id}`, 
+    return this.http.delete(`http://localhost:8080/categoria/${id}`,
     {headers: {'Authorization': environment.token}})
   }
-  
-  
+
+
 }
