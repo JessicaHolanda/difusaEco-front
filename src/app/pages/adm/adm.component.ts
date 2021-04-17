@@ -20,7 +20,7 @@ export class AdmComponent implements OnInit {
 
 
   categoria: Categoria = new Categoria()
-  listaCategorias: Categoria[] 
+  listaCategorias: Categoria[]
   ativo: boolean = false
   categoriaSelecionada: Categoria = new Categoria()
   idCategoria: number
@@ -28,6 +28,7 @@ export class AdmComponent implements OnInit {
   produto: Produto = new Produto()
   listaProdutos: Produto[]
   produtoSelecionado: Produto = new Produto()
+  nomeProduto: string
 
   usuario: Usuario = new Usuario
   listaUsuarios: Usuario[]
@@ -42,37 +43,37 @@ export class AdmComponent implements OnInit {
     private produtoService: ProdutoService,
     private authService: AuthService,
     private route: ActivatedRoute
-     
+
 
   ) { }
-  
+
   ngOnInit() {
 
     let id = this.route.snapshot.params['id']
-    
+
     this.getAllCategorias()
     this.getAllProdutos()
     this.getAllUsuarios()
   }
 
-  
+
 
   /* FUNÇÕES CATEGORIA INICIO */
   cadastrarCategoria(){
-    
+
     this.categoria.ativo = this.ativo
     this.categoriaService.postCategoria(this.categoria).subscribe((resp: Categoria)=>{
       this.categoria = resp
       Swal.fire(
         'Cadastrado',
         'Sua categoria foi cadastrada com sucesso',
-        'success'  
+        'success'
       )
       this.categoria = new Categoria()
       this.getAllCategorias()
         })
   }
-  
+
   getAllCategorias(){
     this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
       this.listaCategorias = resp
@@ -113,8 +114,8 @@ export class AdmComponent implements OnInit {
           'Editado',
           'O usuário foi Editado',
           'success'
-        )       
-      } 
+        )
+      }
     })
   }
 
@@ -136,17 +137,17 @@ export class AdmComponent implements OnInit {
        }).then((result) => {
          if (result.isConfirmed) {
           this.categoriaService.deleteCategoria(id).subscribe(()=>{
-           this.getAllCategorias() 
-          }) 
+           this.getAllCategorias()
+          })
           Swal.fire(
             'Deletado',
             'A categoria foi deletada',
             'success'
-           )   
+           )
          }
-         
-       })  
-          
+
+       })
+
      }catch(error){
       console.log(error.message)
      }
@@ -171,15 +172,29 @@ export class AdmComponent implements OnInit {
       this.getAllProdutos()
       })
   }
-  
+
   getAllProdutos(){
     this.produtoService.getAllProduto().subscribe((resp: Produto[])=>{
       this.listaProdutos = resp
     })
   }
 
+  findProdutoByNome()
+  {
+    if(this.nomeProduto == '')
+    {
+      this.getAllProdutos()
+    }
+    else
+    {
+      this.produtoService.getByNomeProduto(this.nomeProduto).subscribe((resp: Produto[]) => {
+        this.listaProdutos = resp;
+      })
+    }
+  }
+
   selecionarProduto(id: number){
-    
+
     this.produtoService.getByIdProduto(id).subscribe((resp: Produto)=>{
       this.produtoSelecionado = resp
     })
@@ -207,8 +222,8 @@ export class AdmComponent implements OnInit {
           'Editado',
           'O usuário foi Editado',
           'success'
-        )       
-      } 
+        )
+      }
     })
   }
 
@@ -232,16 +247,16 @@ export class AdmComponent implements OnInit {
            this.produtoService.deleteProduto(id).subscribe(()=>{
             this.getAllProdutos()
            })
-           
+
            Swal.fire(
              'Deletado',
              'O Produto foi deletado',
-             'success' 
-           )      
+             'success'
+           )
          }
-          
-        
-       })      
+
+
+       })
      }catch(error){
        console.log(error.message)
      }
@@ -253,7 +268,7 @@ export class AdmComponent implements OnInit {
   /* FUNÇÕES USUARIO INICIO*/
 
   cadastrarUsuario(){
-  
+
     this.authService.cadastrar(this.usuario).subscribe((resp: Usuario)=>{
       this.usuario = resp
       Swal.fire(
@@ -293,16 +308,16 @@ export class AdmComponent implements OnInit {
       this.authService.editarUsuario(this.usuarioSelecionado).subscribe((resp: Usuario)=>{
       this.usuarioSelecionado = resp
       this.getAllUsuarios()
-      this.usuario = new Usuario 
+      this.usuario = new Usuario
       })
         Swal.fire(
           'Editado',
           'O usuário foi Editado',
           'success'
-        ) 
-              
+        )
+
       }
-      
+
     })
   }
 
@@ -331,15 +346,15 @@ export class AdmComponent implements OnInit {
             'Deletado',
             'O usuário foi deletado',
             'success'
-          )       
+          )
         }
-        
-      })     
-      
+
+      })
+
     }catch(error){
       console.log(error.message)
     }
-    
+
   }
 
   confirmeSenha(event: any) {

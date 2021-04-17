@@ -32,6 +32,14 @@
 						Novo produto
 					</button>
           </div>
+          <div class="row d-flex justify-content-center mt-5 mb-5">
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control" id="produto" placeholder="Pesquise por nome de produto" [(ngModel)]="nomeProduto"
+                  (keyup)='findProdutoByNome()'>
+              </div>
+            </div>
+          </div>
 					<table class="table table-sm th2">
 						<thead>
 							<tr class="text-center">
@@ -432,13 +440,3 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-	</div>
-=======
-
-	</div>
-
-
-
-
->>>>>>> 1df431e766b8f3b867ead4ca1fb2f7f43a7791aa
