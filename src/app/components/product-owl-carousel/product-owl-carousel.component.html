@@ -1,5 +1,9 @@
 <div class="container">
 
+  <div class="d-flex justify-content-center p-5">
+    <h1>Produtos em Destaque</h1>
+  </div>
+
 <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor='let item of listaProdutos | slice:0:9'> 
       <div class="slide container">

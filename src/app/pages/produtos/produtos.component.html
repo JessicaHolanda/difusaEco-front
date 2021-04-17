@@ -1,46 +1,37 @@
-<!--Cards-top-->
-<div class="container">
-  <div class="row">
+<!-- Banners em carrossel -->
 
-    <div class="col-md-6 d-flex justify-space-around p-3">
-      <img
-        src="https://www.forbes.com/advisor/wp-content/uploads/2020/04/one-credit-card-to-pay-another-e1592262039821.jpg"
-        class="img-fluid" alt="Imagem responsiva">
-
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://i.imgur.com/5ozQeIZ.jpg" alt="Primeiro Slide">
     </div>
-
-    <div class="col-md-6 d-flex justify-content-center p-3">
-      <img
-        src="https://images.unsplash.com/photo-1559087316-f8860a97e7ba?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
-        class="img-fluid" alt="Imagem responsiva">
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://i.imgur.com/ZQBTByP.jpg" alt="Segundo Slide">
     </div>
-
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://i.imgur.com/DEXv6X7.jpg" alt="Terceiro Slide">
+    </div>
   </div>
-
-  <div class="row">
-
-    <div class="col-md-6 d-flex justify-content-center p-3">
-      <div class="container text-center border">
-        <h1 class="tags-top">FRETE</h1>
-        <p class="bold tags-botton">Lorem Ipsum is simply dummy text of the printing</p>
-      </div>
-    </div>
-
-    <div class="col-md-6 d-flex justify-content-center p-3">
-      <div class="container text-center border">
-        <h1 class="tags-top">PAGAMENTO</h1>
-        <p class="bold tags-botton">Lorem Ipsum is simply dummy text of the printing</p>
-      </div>
-    </div>
-
-  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
 </div>
 
-<!--/Cards-top-->
+<!-- /Banners em carrossel -->
 
-<!--Carrossel -->
+<!--Carrossel de Produtos em Destaque -->
 <app-product-owl-carousel></app-product-owl-carousel>
-<!--Carrossel -->
+<!--/Carrossel de Produtos em Destaque -->
 
 
 <!--Card de produtos-->
@@ -51,39 +42,39 @@
   <div class="row d-flex justify-content-center mt-5 mb-5">
     <div class="col-md-4">
       <div class="form-group">
-        <input type="text" class="form-control" id="produto" placeholder="Pesquise por título"
-          [(ngModel)]="nomeProduto" (keyup)='findProdutoByNome()'>
+        <input type="text" class="form-control" id="produto" placeholder="Pesquise por título" [(ngModel)]="nomeProduto"
+          (keyup)='findProdutoByNome()'>
       </div>
     </div>
   </div>
   <!--/pesquisa-produto-->
 
-      <div class="card-columns mb-5 img-section2">
+  <div class="card-columns mb-5 img-section2">
 
-        <div *ngFor="let item of listaProdutos">
-          <div class="card mt-5">
-            <div class="green-bar"></div>
-            <div class="img-container text-center m-auto w-75 pt-3">
-              <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-              <p class="card-price text-center">R$ {{item.preco}},00</p>
-              <div class="btn-container">
-                <button type="button" class="btn btnMore" data-toggle="modal" data-target="#ModalSaibaMais"
-                  (click)="selecionarProduto(item)">
-                  Saiba Mais
-                </button>
-                <button button type="button" class="btn btnCart" (click)="addToCart(item)">
-                  Carrinho
-                </button>
-              </div>
-
-            </div>
-          </div>
+    <div *ngFor="let item of listaProdutos">
+      <div class="card mt-5">
+        <div class="green-bar"></div>
+        <div class="img-container text-center m-auto w-75 pt-3">
+          <img class="card-img-top-produtos" src="{{item.imagem}}" alt="Imagem card">
         </div>
+        <div class="card-body">
+          <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
+          <p class="card-price text-center">R$ {{item.preco}},00</p>
+          <div class="btn-container">
+            <button type="button" class="btn btnMore" data-toggle="modal" data-target="#ModalSaibaMais"
+              (click)="selecionarProduto(item)">
+              Saiba Mais
+            </button>
+            <button button type="button" class="btn btnCart" (click)="addToCart(item)">
+              Carrinho
+            </button>
+          </div>
 
+        </div>
       </div>
+    </div>
+
+  </div>
 </div>
 <!--/Card de produtos-->
 
@@ -118,5 +109,4 @@
   </div>
 </div>
 
-  <!-- /MODAL Saiba Mais -->
-
+<!-- /MODAL Saiba Mais -->
