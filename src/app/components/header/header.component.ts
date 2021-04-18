@@ -1,3 +1,4 @@
+import { ProdutoCarrinho } from './../../model/Produto-Carrinho';
 import { ProdutoService } from 'src/app/service/produto.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
@@ -26,15 +27,18 @@ export class HeaderComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
-    this.getQtdCarrinho()
+    this.produtoService.qtdProdutosCarrinho.subscribe((carrinho: ProdutoCarrinho[] ) => {
+      if (carrinho && carrinho.length) {
+          this.qtdCarrinho = carrinho.length;
+      }
+  });
 
   }
 
-  getQtdCarrinho(){
-    this.qtdCarrinho = this.produtoService.getProdutosCarrinho().length;
-    console.log(this.qtdCarrinho);
-  }
+  // getQtdCarrinho(){
+  //   this.qtdCarrinho = this.produtoService.getProdutosCarrinho().length;
+  //   console.log(this.qtdCarrinho);
+  // }
 
   sair(){
     // environment.nomeUsuario = ''
