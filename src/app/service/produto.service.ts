@@ -106,7 +106,7 @@ export class ProdutoService {
     );
     return carrinho;
   }
-
+  // REMOVER PRODUTO DO CARRINHO
   removeCartProduct(produto: Produto) {
     let carrinho: ProdutoCarrinho[] = JSON.parse(
       localStorage.getItem('carrinho') || '[]'
@@ -170,5 +170,18 @@ export class ProdutoService {
       }
     }
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  }
+
+  clearCart(){
+
+    // this.getProdutosCarrinho()
+    // localStorage.clear()
+
+    //localStorage.getItem('carrinho');
+    localStorage.removeItem('carrinho');
+    this.atualizaQtdCarrinho();
+
+
+
   }
 }

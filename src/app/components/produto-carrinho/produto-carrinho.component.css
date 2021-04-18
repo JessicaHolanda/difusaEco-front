@@ -46,6 +46,7 @@
 
 .icon-remove {
   color: #27AE60;
+  cursor: pointer;
 }
 
 .input-qtd {
