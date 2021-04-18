@@ -1,3 +1,4 @@
+import { UtilService } from './../../service/util.service';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoCarrinho } from 'src/app/model/Produto-Carrinho';
@@ -13,7 +14,10 @@ export class ProdutoCarrinhoComponent implements OnInit {
   public qtd: number;
   public novoTotalProduto: number;
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(
+    private produtoService: ProdutoService,
+    private utilService: UtilService
+    ) { }
 
   @Output() public removeProduct= new EventEmitter();
   @Output() public attValorTotal= new EventEmitter();

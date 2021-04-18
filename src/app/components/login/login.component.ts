@@ -76,12 +76,6 @@ export class LoginComponent implements OnInit {
   logar() {
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
         this.userLogin = resp;
-
-        // environment.token = this.userLogin.token
-        // environment.nomeUsuario = this.userLogin.nomeUsuario
-        // environment.id = this.userLogin.id
-        // environment.tipoUsuario = this.userLogin.tipoUsuario
-
         $('.close').trigger('click');
 
         const Toast = Swal.mixin({

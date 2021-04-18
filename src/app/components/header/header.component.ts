@@ -28,25 +28,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.produtoService.qtdProdutosCarrinho.subscribe((carrinho: ProdutoCarrinho[] ) => {
-      if (carrinho && carrinho.length) {
+      if (carrinho) {
           this.qtdCarrinho = carrinho.length;
       }
-  });
-
+    });
   }
 
-  // getQtdCarrinho(){
-  //   this.qtdCarrinho = this.produtoService.getProdutosCarrinho().length;
-  //   console.log(this.qtdCarrinho);
-  // }
-
   sair(){
-    // environment.nomeUsuario = ''
-    // environment.token = ''
-    // environment.id = 0
-    // environment.tipoUsuario = ''
     this.authService.logoutLocalStorage();
     this.router.navigate(['/home'])
   }
-
 }
