@@ -1,3 +1,4 @@
+import { UtilService } from './util.service';
 import { ProdutoCarrinho } from './../model/Produto-Carrinho';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Produto } from '../model/Produto';
 import { AuthService } from './auth.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,11 @@ import { AuthService } from './auth.service';
 export class ProdutoService {
   public qtdProdutosCarrinho = new Subject<any>();
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private utilService: UtilService
+    ) {
     this.atualizaQtdCarrinho();
   }
 
@@ -81,15 +87,19 @@ export class ProdutoService {
     }
 
     if(produtoExiste){
-      alert("Produto já está no carrinho.");
+      this.utilService.showToast('Produto já está no carrinho', 'info');
 
     } else {
       carrinho.push(produtoCarrinho);
       localStorage.setItem('carrinho', JSON.stringify(carrinho));
       this.atualizaQtdCarrinho()
+
+      this.utilService.showToast('Produto adicionado ao carrinho!');
     }
   }
 
+
+  // GET PRODUTOS
   getProdutosCarrinho(): ProdutoCarrinho[] {
     const carrinho: ProdutoCarrinho[] = JSON.parse(
       localStorage.getItem('carrinho') || '[]'
@@ -104,10 +114,9 @@ export class ProdutoService {
 
     carrinho = carrinho.filter((item) => item.produto.id !== produto.id);
 
-    alert('Registro excluído');
-
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    this.atualizaQtdCarrinho()
+    this.atualizaQtdCarrinho();
+    this.utilService.showToast('Produto removido do carrinho!');
   }
 
   // QUANTIDADE NO CARRINHO
