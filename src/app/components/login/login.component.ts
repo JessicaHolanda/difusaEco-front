@@ -21,8 +21,10 @@ export class LoginComponent implements OnInit {
   tipoUsuario: string = "normal"
   userLogin: UserLogin = new UserLogin
 
-  // Validação de Campos
-  nomeValido: boolean = false
+  // Confirmação de Dados
+  nomeValido: boolean = false;
+  emailValido: boolean = false;
+  senhaValida: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     window.scroll(0,0)
     this.getAllUsuarios()
   }
@@ -67,6 +70,7 @@ export class LoginComponent implements OnInit {
       })
     }
 
+
   }
 
   getAllUsuarios() {
@@ -76,7 +80,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  verificarLogin(){
+  verificarLogin() {
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
       console.log(resp)
     })
@@ -91,6 +95,8 @@ export class LoginComponent implements OnInit {
       environment.nomeUsuario = this.userLogin.nomeUsuario
       environment.id = this.userLogin.id
       environment.tipoUsuario = this.userLogin.tipoUsuario
+      $(".close").trigger('click')
+
 
       $('#modalLogin').hide()
 
@@ -116,6 +122,12 @@ export class LoginComponent implements OnInit {
       })
 
 
+    }, err => {
+      if (err.status == 401) {
+        alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
+      }
+
+
       // if(this.userLogin.tipoUsuario == "normal"){
       //   $('#modalLogin').hide()
 
@@ -128,7 +140,15 @@ export class LoginComponent implements OnInit {
       // }
 
 
-    } , err => {
+      if (err.status == 500) {
+        alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
+      }
+    })
+  }
+
+
+  // Validação de Dados
+
 
       if(err.status == 401) {
        /*  alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.') */
@@ -147,21 +167,31 @@ export class LoginComponent implements OnInit {
 
     })
   /*   alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.') */
-  }
 
-    })
-  }
-
-  validaNome(event: any){
+  validaNome(event: any) {
     this.nomeValido = this.validation(event.target.value.length < 3, event);
   }
 
-  validation(condicao: boolean, event:any){
+  validaEmail(event: any) {
+    this.emailValido = this.validation(event.target.value.indexOf('@') == -1 || event.target.value.indexOf('.') == -1, event);
+
+  }
+
+  validaSenha(event: any) {
+    this.senhaValida = this.validation(event.target.value.length < 5, event)
+  }
+
+  confirmSenha(event: any) {
+    this.confirmarSenha = event.target.value;
+    this.senhaValida = this.validation(this.confirmarSenha != this.user.senha, event)
+  }
+
+  validation(condicao: boolean, event: any) {
     let valid = false;
-    if(condicao){
+    if (condicao) {
       event.target.classList.remove("is-valid");
       event.target.classList.add("is-invalid");
-    }else{
+    } else {
       event.target.classList.remove("is-invalid");
       event.target.classList.add("is-valid");
       valid = true;
@@ -169,5 +199,19 @@ export class LoginComponent implements OnInit {
     return valid;
   }
 
+  cadastrar() {
+    this.user.tipoUsuario = this.tipoUsuario;
 
+    if (this.user.senha != this.confirmarSenha) {
+
+      this.confirmSenha;
+
+      alert("Por favor, verifique novamente as senhas digitadas.")
+    } else if (this.nomeValido && this.emailValido && this.senhaValida) {
+      this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
+        this.user = resp
+        alert("Cadastro realizado com sucesso. Bem vinde! Realize login.")
+      })
+    }
+  }
 }
