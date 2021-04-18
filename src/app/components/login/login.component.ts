@@ -5,6 +5,7 @@ import { Usuario } from 'src/app/model/Usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 import * as $ from 'jquery';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -41,11 +42,28 @@ export class LoginComponent implements OnInit {
     this.user.tipoUsuario = this.tipoUsuario
 
     if (this.user.senha != this.confirmarSenha) {
-      alert("Senhas não conferem. Favor digitar novamente.")
+      Swal.fire({
+        title: 'Erro de Cadastro!',
+        text: 'Senhas não conferem. Favor digitar novamente.',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+
+      })
+    /*   alert("Senhas não conferem. Favor digitar novamente.") */
     } else {
       this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
         this.user = resp
-        alert("Cadastro realizado com sucesso. Bem vinde! Realize login.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Cadastro realizado com sucesso.',
+          text: 'Bem vinde! Realize login',
+          showConfirmButton: false,
+          timer: 5000
+        })
+        /* alert("Cadastro realizado com sucesso. Bem vinde! Realize login.") */
       })
     }
 
@@ -78,8 +96,24 @@ export class LoginComponent implements OnInit {
 
       $('#modalLogin').hide()
 
-      $('.modal-backdrop').hide()
-      alert("Welcome!")
+       $('.modal-backdrop').hide()
+      /*alert("Welcome!") */
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Seja Bem vinde!'
+      })
 
 
       // if(this.userLogin.tipoUsuario == "normal"){
@@ -92,17 +126,27 @@ export class LoginComponent implements OnInit {
       // } else {
       //   this.router.navigate(['/adm'])
       // }
-      
+
 
     } , err => {
 
       if(err.status == 401) {
-        alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
-     
+       /*  alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.') */
+
    }
 
    if(err.status == 500) {
-    alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.')
+
+    Swal.fire({
+      title: 'Erro de Login!',
+      text: 'Por gentileza, verifique se o e-mail e a senha foram digitados corretamente',
+      icon: 'error',
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+
+    })
+  /*   alert('Por gentileza, verifique se o e-mail e a senha foram digitados corretamente.') */
   }
 
     })
