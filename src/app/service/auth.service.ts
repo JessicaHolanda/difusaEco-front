@@ -95,7 +95,6 @@ export class AuthService {
     let usuarioString = localStorage.getItem('userAuth');
     let usuarioLogado: UserLogin = new UserLogin();
     if(usuarioString) {
-      console.log(usuarioString);
       usuarioLogado = JSON.parse(usuarioString || '');
     }
     return usuarioLogado;

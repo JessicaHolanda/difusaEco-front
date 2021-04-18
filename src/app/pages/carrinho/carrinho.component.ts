@@ -23,14 +23,11 @@ export class CarrinhoComponent implements OnInit {
 
   getProdutoCarrinho(){
     this.produtosCarrinho = this.produtoService.getProdutosCarrinho();
-    console.log(this.produtosCarrinho.length)
   }
 
   getTotal(){
     const produtos = this.produtoService.getProdutosCarrinho();
-
     this.carrinhoFinal = produtos;
-    console.log(produtos);
 
       this.precoTotal=0;
       produtos.forEach((produto) => {
