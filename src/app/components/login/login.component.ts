@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //window.scroll(0,0)
+    window.scroll(0,0)
     // this.authService.autoAuthUser();
   }
 
@@ -50,11 +50,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getAllUsuarios() {
-    this.authService.getAllUsuarios().subscribe((resp: Usuario[]) => {
-      this.userLista = resp
-    })
-  }
+  // getAllUsuarios() {
+  //   this.authService.getAllUsuarios().subscribe((resp: Usuario[]) => {
+  //     this.userLista = resp
+  //   })
+  // }
 
   verificarLogin(){
     this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {

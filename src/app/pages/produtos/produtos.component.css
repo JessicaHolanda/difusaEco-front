@@ -51,12 +51,11 @@
     color:#27AE60;
   }
 
-
-
 .border {
   background: #27AE60;
   border-radius: 15px;
 }
+
 .tags-top{
   font-family: Amatic SC;
   font-style: normal;
@@ -150,20 +149,24 @@ width: 180px;
 height: 180px;
 border-radius: 15px 0px;
 }
+
 .card-produtos {
 border-radius: 17px 0px;
 border: 0;
 width: 330px;
 height: 480px;
 }
+
 .header-card-produtos {
 border-radius: 15px 0px;
 background-color: #27AE60;
 height: 40px;
 }
+
 h1 {
 color: rgba(58, 22, 81, 1);
 }
+
 .btn {
 text-align: center;
 left: 0%;
@@ -221,4 +224,9 @@ display: flex;
 justify-content:space-around;
 text-align: center;
 padding-bottom: 1%;
+}
+
+.img-fluid {
+  height: 305px;
+  width: 535px;
 }
