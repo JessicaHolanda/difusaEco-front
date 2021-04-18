@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -10,11 +11,12 @@ import { Categoria } from '../model/Categoria';
 export class CategoriaService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ) { }
 
   token={
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', this.authService.getUsuarioLogado().token)
   }
 
   getAllCategoria(): Observable<Categoria[]> {
@@ -30,16 +32,16 @@ export class CategoriaService {
   }
 
   postCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.post<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': environment.token}})
+    return this.http.post<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': this.authService.getUsuarioLogado().token}})
   }
 
   putCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.put<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': environment.token}})
+    return this.http.put<Categoria>('http://localhost:8080/categoria',categoria, {headers: {'Authorization': this.authService.getUsuarioLogado().token}})
   }
 
   deleteCategoria(id: number) {
     return this.http.delete(`http://localhost:8080/categoria/${id}`,
-    {headers: {'Authorization': environment.token}})
+    {headers: {'Authorization': this.authService.getUsuarioLogado().token}})
   }
 
 

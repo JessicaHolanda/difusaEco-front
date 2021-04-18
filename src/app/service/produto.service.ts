@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Produto } from '../model/Produto';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -12,11 +13,14 @@ import { Produto } from '../model/Produto';
 })
 export class ProdutoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+    ) { }
 
 
   token={
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', this.authService.getUsuarioLogado().token)
   }
 
   getAllProduto(): Observable<Produto[]>{
@@ -32,15 +36,15 @@ export class ProdutoService {
   }
 
   postProduto(produto: Produto): Observable<Produto>{
-    return this.http.post<Produto>("http://localhost:8080/produto",produto, {headers: {'Authorization': environment.token}})
+    return this.http.post<Produto>("http://localhost:8080/produto",produto, {headers: {'Authorization': this.authService.getUsuarioLogado().token}})
   }
 
   putProduto(produto: Produto): Observable<Produto>{
-    return this.http.put<Produto>("http://localhost:8080/produto",produto, {headers: {'Authorization': environment.token}})
+    return this.http.put<Produto>("http://localhost:8080/produto",produto, {headers: {'Authorization': this.authService.getUsuarioLogado().token}})
   }
 
   deleteProduto(id:number){
-    return this.http.delete(`http://localhost:8080/produto/${id}`, {headers: {'Authorization': environment.token}})
+    return this.http.delete(`http://localhost:8080/produto/${id}`, {headers: {'Authorization': this.authService.getUsuarioLogado().token}})
   }
 
 

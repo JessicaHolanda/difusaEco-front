@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NumberValueAccessor } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
@@ -16,11 +17,11 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) { }
-  
+
   token = {
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', this.getUsuarioLogado().token)
   }
-  
+
 
   logar(userLogin: UserLogin): Observable<UserLogin>{
     return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar',userLogin)
@@ -46,26 +47,23 @@ export class AuthService {
     return this.http.delete(`http://localhost:8080/usuarios/${id}`)
   }
 
-  logado() {
-    let ok = false
+  // logado() {
+  //   let ok = false
 
-    if (environment.token != '') {
-      ok = true
-    }
+  //   if (environment.token != '') {
+  //     ok = true
+  //   }
+  //   return ok
+  // }
 
-    return ok
-    
-  }
+  // deslogado() {
+  //   let ok = false
 
-  deslogado() {
-    let ok = false
-
-    if (environment.token == '') {
-      ok = true
-    }
-
-    return ok
-  }
+  //   if (environment.token == '') {
+  //     ok = true
+  //   }
+  //   return ok
+  // }
 
   adm() {
     let ok = false
@@ -74,7 +72,53 @@ export class AuthService {
       ok = true
     }
 
-    return ok 
+    return ok
   }
-  
+
+  /**
+        Funções relacionadas ao Local Storage
+   */
+
+  saveAuthData(usuario: UserLogin) {
+    const userAuth: UserLogin = usuario;
+    //const userAuth = usuario.token;
+    //localStorage.setItem("userAuth", userAuth);
+    localStorage.setItem("userAuth", JSON.stringify(userAuth));
+  }
+
+
+  logoutLocalStorage() {
+    localStorage.removeItem("userAuth");
+  }
+
+  getUsuarioLogado() {
+    let usuarioString = localStorage.getItem('userAuth');
+    let usuarioLogado: UserLogin = new UserLogin();
+    if(usuarioString) {
+      console.log(usuarioString);
+      usuarioLogado = JSON.parse(usuarioString || '');
+    }
+    return usuarioLogado;
+  }
+
+  getAuthData() {
+    const userAuth = localStorage.getItem("userAuth");
+    if(!userAuth){
+      return false; //deslogado
+    }
+    return true; //logado
+  }
+
+  usuarioAdm() {
+    let verificaTipoUsuario = this.getUsuarioLogado();
+    let ok = false;
+
+    if (this.getAuthData()) {
+      if (verificaTipoUsuario.tipoUsuario == 'adm'){
+        ok = true
+      }
+    }
+    return ok;
+  }
+
 }
