@@ -18,7 +18,7 @@ import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 import { ProdutoCarrinhoComponent } from './components/produto-carrinho/produto-carrinho.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { ReciboComponent } from './pages/recibo/recibo.component';
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
