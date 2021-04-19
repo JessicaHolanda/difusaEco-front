@@ -38,4 +38,8 @@ export class ReciboComponent implements OnInit {
       this.precoTotal1 += produto.totalProduto;
     });
   }
+
+  limpaCarrinho(){
+    this.produtoService.clearCart();
+  }
 }

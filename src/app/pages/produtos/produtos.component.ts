@@ -8,7 +8,7 @@ import { ProdutoService } from 'src/app/service/produto.service';
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.css']
+  styleUrls: ['./produtos.component.css'],
 })
 export class ProdutosComponent implements OnInit {
 
@@ -73,9 +73,9 @@ export class ProdutosComponent implements OnInit {
    // Abrir modal com produto selecionado
 
    selecionarProduto(produto: Produto){
- 
+
     this.produtoSelecionado = produto
-    
+
   }
 
   /*
