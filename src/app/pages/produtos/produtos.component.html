@@ -97,8 +97,8 @@
         </div>
         <p class="text-center p-3" id="ProdutoSelecionadoDescricao">
           {{produtoSelecionado.descricao}}</p>
-        <p class="card-price text-center p-3" id="ProdutoSelecionadoPreco">R$
-          {{produtoSelecionado.preco}},00</p>
+        <p class="card-price text-center p-3" id="ProdutoSelecionadoPreco">
+          {{produtoSelecionado.preco |currency:"BRL"}}</p>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
           <button type="button" class="btn btnCart" (click)="addToCart(produtoSelecionado)"

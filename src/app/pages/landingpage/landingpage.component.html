@@ -4,7 +4,7 @@
   <section>
     <div class="row mt-3">
       <div class="col-lg-5 col-md-5 col-sm-12 texto-container">
-        <div class=" text-justify">
+        <div class=" text-justify ml-4">
           <h5 class="title text-center">Bem vinde!</h5>
           <div class="text-center">
             <p class="text">O projeto nasceu com o propósito de
@@ -21,7 +21,7 @@
       </div>
       <div class="col-lg-7 col-md-7 col-sm-12 p-3">
         <div>
-          <img class="w-100" src="../../../assets/img/earth.svg">
+          <img class="img-home" src="../../../assets/img/earth.svg">
         </div>
       </div>
     </div>
@@ -65,14 +65,14 @@
   <div class="container">
 
     <owl-carousel-o [options]="customOptionsCardMembers">
-        <ng-template carouselSlide *ngFor="let member of members"> 
+        <ng-template carouselSlide *ngFor="let member of members">
           <div class="slide container">
             <app-card-member [member]="member"></app-card-member>
           </div>
         </ng-template>
-    
+
       </owl-carousel-o>
-    
+
     </div>
 
     <!--/Sobrenos-->

@@ -1,6 +1,20 @@
 footer {
-  background: #027333D4;
+  background: #038b3ed4;
 
+}
+
+.social-network{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.third-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 ul.social-network{
@@ -15,7 +29,7 @@ ul.social-network li{
 }
 
 .fab{
-    font-size: 35pt;
+    font-size: 2rem;
     color: rgb(0, 0, 0);
     padding: 5px;
 }
