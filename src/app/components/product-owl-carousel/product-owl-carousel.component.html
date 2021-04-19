@@ -5,7 +5,7 @@
   </div>
 
 <owl-carousel-o [options]="customOptions">
-    <ng-template carouselSlide *ngFor='let item of listaProdutos | slice:0:9'> 
+    <ng-template carouselSlide *ngFor='let item of listaProdutos | slice:0:9'>
       <div class="slide container">
         <div class="card-columns d-flex justify-space-evenly">
             <div class="card card-produtos">
@@ -15,7 +15,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-                <p class="card-price text-center">R$ {{item.preco}},00</p>
+                <p class="card-price text-center">{{item.preco |currency:"BRL"}}</p>
               </div>
               <div class="btn-container">
                 <button type="button" class="btn btnMore" data-toggle="modal" data-target="#ModalSaibaMais"
@@ -54,8 +54,8 @@
         </div>
         <p class="text-center p-3" id="ProdutoSelecionadoDescricao">
           {{produtoSelecionado.descricao}}</p>
-        <p class="card-price text-center p-3" id="ProdutoSelecionadoPreco">R$
-          {{produtoSelecionado.preco}},00</p>
+        <p class="card-price text-center p-3" id="ProdutoSelecionadoPreco">
+          {{produtoSelecionado.preco |currency:"BRL"}}</p>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
           <button type="button" class="btn btnCart" (click)="addToCart(produtoSelecionado)"

@@ -58,16 +58,42 @@
   text-align: center;
 }
 
+.product-values {
+
+  display: flex;
+  position: absolute;
+  right: 3%;
+  top: 37%;
+}
+
+.valor-total-produto {
+	position: absolute;
+	right: 33%;
+	top: 5%;
+}
+
+
+
 @media (max-width: 768px) {
   .product-details {
     text-align: center;
     padding: 0 0.5rem;
-    margin-bottom: 8px;
+    margin-bottom: 2rem;
+    /* padding-left: 3rem; */
   }
 
   .product-values {
     text-align: center;
     padding: 0 0.5rem;
-    margin-bottom: 8px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    left: 22%;
+    top: 80%;
   }
+
+  .img-container {
+    display: flex;
+    justify-content: center;
+  }
+
 }

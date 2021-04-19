@@ -3,7 +3,7 @@
   <div class="row">
     <!--Imagem-->
     <div class="col-md-3 col-12">
-      <div class="p-2">
+      <div class="p-2 img-container">
         <img class="w-100 product-image p-2" src="{{produtoCarrinho?.produto?.imagem}}">
       </div>
     </div>
@@ -25,7 +25,7 @@
 
       <!--Preço-->
       <div>
-        <div>R$ {{produtoCarrinho?.produto?.preco}}</div>
+        <div>{{produtoCarrinho?.produto?.preco |currency:"BRL"}}</div>
       </div>
       <!--END Preço-->
     </div>
@@ -46,8 +46,8 @@
       <!--END Quantidade-->
 
       <!--Valor Total Produto-->
-      <div class="valor-total-produto">
-        <p>R$ {{produtoCarrinho?.totalProduto}} </p>
+      <div class="valor-total-produto d-flex">
+        <p>{{produtoCarrinho?.totalProduto |currency:"BRL"}} </p>
       </div>
       <!--Valor Total Produto-->
 

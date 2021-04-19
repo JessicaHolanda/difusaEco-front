@@ -59,7 +59,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title text-center">{{item.nomeProduto}}</h5>
-          <p class="card-price text-center">R$ {{item.preco}},00</p>
+          <p class="card-price text-center">{{item.preco |currency:"BRL"}}</p>
           <div class="btn-container">
             <button type="button" class="btn btnMore" data-toggle="modal" data-target="#ModalSaibaMais"
               (click)="selecionarProduto(item)">

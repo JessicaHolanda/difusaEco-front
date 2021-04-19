@@ -9,7 +9,8 @@
         <div class="row">
 
           <div class="col-12 mb-2 " *ngFor="let produto of produtosCarrinho">
-            <app-produto-carrinho (removeProduct)="getProdutoCarrinho()" [produto]="produto" (attValorTotal)="getTotal()">
+            <app-produto-carrinho (removeProduct)="getProdutoCarrinho()" [produto]="produto"
+              (attValorTotal)="getTotal()">
 
             </app-produto-carrinho>
           </div>
@@ -18,13 +19,15 @@
       </div>
 
       <div class="col-md-4 col-12">
-        <div class="green-bar"></div>
-        <div class="totals p-3">
-          <p class="totals-header font-weight-bold pb-2">
-            Resumo do Pedido
-          </p>
-          <div class="totals-content">
-            <p>Valor dos produtos: R$ {{ precoTotal }} </p>
+        <div class="card">
+          <div class="green-bar"></div>
+          <div class="totals p-3">
+            <p class="totals-header font-weight-bold pb-2">
+              Resumo do Pedido
+            </p>
+            <div class="totals-content">
+              <p>Valor dos produtos: {{ precoTotal |currency:"BRL"}} </p>
+            </div>
           </div>
         </div>
 
@@ -47,9 +50,9 @@
   <div class="carrinho-vazio title text-center" *ngIf="produtosCarrinho && produtosCarrinho.length == 0">
     <h1>Carrinho Vazio!</h1>
 
-      <div class="">
-        <img src="../../../assets/img/search.svg" alt="">
-      </div>
+    <div class="img-carrinho-vazio m-auto">
+      <img src="../../../assets/img/search.svg" alt="">
+    </div>
 
 
 
