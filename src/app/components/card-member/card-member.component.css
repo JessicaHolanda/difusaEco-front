@@ -1,10 +1,13 @@
+div {
+  transition: transform 1s;
+}
 .card-img{
   border-radius: 9px;
 }
 
 .card {
   background: #3F3D56;
-  color: #ffffff
+  color: #ffffff;
 }
 
 .card-title{
@@ -12,7 +15,7 @@
 }
 
 .card:hover{
-top:-8px;
+  transform: scale(1.05);
 }
 
 .icone-git {
