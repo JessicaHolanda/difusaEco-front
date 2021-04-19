@@ -57,15 +57,15 @@
               </td>
 
               <td class="text-center">{{ produto.qtd }}</td>
-              <td class="text-center preco">R$ {{ produto.produto.preco }}</td>
-              <td class="text-center preco">R$ {{ produto.totalProduto }}</td>
+              <td class="text-center preco">{{ produto.produto.preco |currency:"BRL" }}</td>
+              <td class="text-center preco">{{ produto.totalProduto |currency:"BRL" }}</td>
             </tr>
           </tbody>
         </table>
         <div>
           <div class="text-right pr-4">
             <h6>
-              <strong><span>Total: </span> R$ {{ precoTotal1 }}</strong>
+              <strong><span>Total: </span>{{ precoTotal1 |currency:"BRL"}}</strong>
             </h6>
           </div>
         </div>
