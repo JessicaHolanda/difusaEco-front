@@ -1,7 +1,6 @@
 
 :root {
 
-
 }
 
 html, body, #root {
@@ -12,7 +11,28 @@ body,
 input,
 button,
 textarea {
-    font: 1.6rem Nunito;
+    font-size: 1.6rem;
+    font-family: Nunito;
+}
+
+.description-projeto {
+  font-size: 1.3rem;
+  font-family: Nunito;
+}
+
+.description {
+  font-size: 1rem;
+  font-family: Nunito;
+}
+
+.description p {
+  font-size: 1rem;
+  font-family: Nunito;
+}
+
+.member-name {
+  font-size: 1rem;
+  font-family: Nunito;
 }
 
 h1, h2, h3, h4, h5, h6 {
